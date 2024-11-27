@@ -12,6 +12,7 @@
     />
     <title>FUT-Champ-Ultimate-Team</title>
   </head>
+
   <body>
     <div class="row">
       <div class="col-md-2">
@@ -22,34 +23,226 @@
               alt="phto de manager"
             />
           </div>
+
           <div class="item">
             <img src="Assets/img/téléchargement.png" alt="logo de cetteTeam" />
           </div>
+
+          
           <div class="item">
             <img src="Assets/img/tenu bleu.jpg" alt="Changment" />
           </div>
-          <div class="item" id="clickItem">
-            <img src="Assets/img/tenu red.webp" alt="Players" />
-          </div>
-        </div>
-        <!-- start Modal -->
-        <div id="myModal" class="modal" style="display: none">
-          <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <p>ALL PLayers</p>
-          </div>
-        </div>
-        <!-- end Modal -->
-      </div>
 
-      <div class="col-md-1"></div>
+          
+          <button id="openModal">
+            <div>
+              <div class="item">
+                <img src="./Assets/img/tenu bleu.jpg" alt="Changment" />
+              </div>
+            </div>
+          </button>
+
+          <div id="semiPage" class="semi-page">
+            <div class="semi-page-content">
+              <span class="close">&times;x</span>
+              <div>
+             
+
+                <div id="playercard-fitsch"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- <div id="semiPage" class="semi-page">
+            <div class="semi-page-content">
+              <span class="close">&times;x</span>
+
+              <div id="playerCardsContainer"></div>
+            </div>
+          </div> -->
+        </div>
+      </div>
 
       <div class="col-md-6">
-        tis is a stadt de football
-        <img src="Assets/img/field football.png" alt="" />
+        <!-- player dans le stadth -->
+
+        <div class="parent1">
+          <div class="div1">
+            <div class="col-md-3">
+              <div class="d-flex item1">
+                <div class="card-info">
+                  <p class="position">CF</p>
+                  <p class="rating">101</p>
+                  <img src="" alt="flag" class="flag" />
+                </div>
+                <div class="card-image" id="clickItem">
+                  <img src="Assets/img/tenu bleu.jpg" alt="Player" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="div2">
+            <div class="col-md-3">
+              <div class="d-flex item1">
+                <div class="card-info">
+                  <p class="position">CF</p>
+                  <p class="rating">101</p>
+                  <img src="" alt="flag" class="flag" />
+                </div>
+                <div class="card-image" id="clickItem">
+                  <img src="Assets/img/tenu red.webp" alt="Player" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="div3">
+            <div class="col-md-3">
+              <div class="d-flex item1">
+                <div class="card-info">
+                  <p class="position">CF</p>
+                  <p class="rating">101</p>
+                  <img src="" alt="flag" class="flag" />
+                </div>
+                <div class="card-image" id="clickItem">
+                  <img src="Assets/img/tenu red.webp" alt="Player" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="div4">
+            <div class="col-md-3">
+              <div class="d-flex item1">
+                <div class="card-info">
+                  <p class="position">CF</p>
+                  <p class="rating">101</p>
+                  <img src="" alt="flag" class="flag" />
+                </div>
+                <div class="card-image" id="clickItem">
+                  <img src="Assets/img/tenu red.webp" alt="Player" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="div5">
+            <div class="col-md-3">
+              <div class="d-flex item1">
+                <div class="card-info">
+                  <p class="position">CF</p>
+                  <p class="rating">101</p>
+                  <img src="" alt="flag" class="flag" />
+                </div>
+                <div class="card-image" id="clickItem">
+                  <img src="Assets/img/tenu red.webp" alt="Player" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="div6">
+            <div class="col-md-3">
+              <div class="d-flex item1">
+                <div class="card-info">
+                  <p class="position">CF</p>
+                  <p class="rating">101</p>
+                  <img src="" alt="flag" class="flag" />
+                </div>
+                <div class="card-image" id="clickItem">
+                  <img src="Assets/img/tenu red.webp" alt="Player" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="div7">
+            <div class="col-md-3">
+              <div class="d-flex item1">
+                <div class="card-info">
+                  <p class="position">CF</p>
+                  <p class="rating">101</p>
+                  <img src="" alt="flag" class="flag" />
+                </div>
+                <div class="card-image" id="clickItem">
+                  <img src="Assets/img/tenu red.webp" alt="Player" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="div8">
+            <div class="col-md-3">
+              <div class="d-flex item1">
+                <div class="card-info">
+                  <p class="position">CF</p>
+                  <p class="rating">101</p>
+                  <img src="" alt="flag" class="flag" />
+                </div>
+                <div class="card-image" id="clickItem">
+                  <img src="Assets/img/tenu red.webp" alt="Player" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="div9">
+            <div class="col-md-3">
+              <div class="d-flex item1">
+                <div class="card-info">
+                  <p class="position">CF</p>
+                  <p class="rating">101</p>
+                  <img src="" alt="flag" class="flag" />
+                </div>
+                <div class="card-image" id="clickItem">
+                  <img src="Assets/img/tenu red.webp" alt="Player" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="div10">
+            <div class="col-md-3">
+              <div class="d-flex item1">
+                <div class="card-info">
+                  <p class="position">CF</p>
+                  <p class="rating">101</p>
+                  <img src="" alt="flag" class="flag" />
+                </div>
+                <div class="card-image" id="clickItem">
+                  <img src="Assets/img/tenu red.webp" alt="Player" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="div11">
+            <div class="col-md-3">
+              <div class="d-flex item1">
+                <div class="card-info">
+                  <p class="position">CF</p>
+                  <p class="rating">101</p>
+                  <img src="" alt="flag" class="flag" />
+                </div>
+                <div class="card-image" id="clickItem">
+                  <img src="Assets/img/tenu red.webp" alt="Player" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- <img src="Assets/img/field football.png" alt="" /> -->
       </div>
 
-      <div class="col-md-3"></div>
+      <!-- card fack in this section -->
+      <div class="col-md-3">
+        <div class="d-flex item1">
+          <div class="card-info">
+            <p class="position">CF</p>
+            <p class="rating">101</p>
+            <img src="" alt="flag" class="flag" />
+          </div>
+          <div class="card-image" id="clickItem">
+            <img src="Assets/img/tenu red.webp" alt="Player" />
+          </div>
+        </div>
+      </div>
+
+      <!-- end card  -->
     </div>
 
     <script src="Assets/js/app.js"></script>
