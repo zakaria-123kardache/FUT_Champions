@@ -28,12 +28,10 @@
             <img src="Assets/img/téléchargement.png" alt="logo de cetteTeam" />
           </div>
 
-          
           <div class="item">
             <img src="Assets/img/tenu bleu.jpg" alt="Changment" />
           </div>
 
-          
           <button id="openModal">
             <div>
               <div class="item">
@@ -44,14 +42,28 @@
 
           <div id="semiPage" class="semi-page">
             <div class="semi-page-content">
-              <span class="close">&times;x</span>
+              <span class="close">&times;</span>
               <div>
-             
+                
+                <button
+                  type="button"
+                  class="btn btn-primary mb-3"
+                  data-toggle="modal"
+                   data-target="#exampleModal"
+                >
+                  Add Player
+                </button>
+
+
+
+               
 
                 <div id="playercard-fitsch"></div>
               </div>
             </div>
           </div>
+
+         
 
           <!-- <div id="semiPage" class="semi-page">
             <div class="semi-page-content">
@@ -229,7 +241,7 @@
       </div>
 
       <!-- card fack in this section -->
-      <div class="col-md-3">
+      <!-- <div class="col-md-3">
         <div class="d-flex item1">
           <div class="card-info">
             <p class="position">CF</p>
@@ -240,10 +252,184 @@
             <img src="Assets/img/tenu red.webp" alt="Player" />
           </div>
         </div>
-      </div>
+      </div> -->
 
       <!-- end card  -->
     </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="playerForm">
+              <div class="mb-3">
+                <label for="position"
+                  >position:</label
+                >
+                <select id="position" class="form-select" required>
+                  <option value="RW">RW</option>
+                  <option value="ST">ST</option>
+                  <option value="CM">CM</option>
+                  <option value="CB">CB</option>
+                  <option value="LW">LW</option>
+                  <option value="GK">GK</option>
+                  <option value="CDM">CDM</option>
+                  <option value="LB">LB</option>
+                  <option value="RB">RB</option>
+                </select>
+              </div>
+              <!-- end model -->
+              <div class="mb-3">
+                <label for="photo" class="form-label">photo:</label>
+                <input
+                  type="file"
+                  id="photo"
+                  class="form-control"
+                  accept="image/*"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="Name" class="form-label">Name:</label>
+                <input
+                  type="text"
+                  id="Name"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="nationality" class="form-label"
+                  >nationality:</label
+                >
+                <input
+                  type="text"
+                  id="nationality"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="flag" class="form-label">flag:</label>
+                <input
+                  type="text"
+                  id="flag"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="club" class="form-label">club:</label>
+                <input
+                  type="text"
+                  id="club"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="logo" class="form-label">logo:</label>
+                <input
+                  type="text"
+                  id="logo"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="rating" class="form-label"
+                  >rating:</label
+                >
+                <input
+                  type="text"
+                  id="rating"
+                  class="form-control"
+                  required
+                />
+              </div>
+
+              <div class="mb-3">
+                <label for="pace" class="form-label">pace:</label>
+                <input
+                  type="pace"
+                  id="pace"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="shooting" class="form-label"
+                  >shooting:</label
+                >
+                <input
+                  type="text"
+                  id="shooting"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="passing" class="form-label"
+                  >passing:</label
+                >
+                <input
+                  type="text"
+                  id="passing"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="dribbling" class="form-label"
+                  >dribbling:</label
+                >
+                <input
+                  type="text"
+                  id="dribbling"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="defending" class="form-label"
+                  >defending:</label
+                >
+                <input
+                  type="text"
+                  id="defending"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="physical" class="form-label"
+                  >physical:</label
+                >
+                <input
+                  type="text"
+                  id="physical"
+                  class="form-control"
+                  required
+                />
+              </div>
+
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" onclick="addPlayer()" class="btn btn-primary">Add player</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    
 
     <script src="Assets/js/app.js"></script>
     <script
