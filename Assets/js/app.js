@@ -1,109 +1,115 @@
+
+
 function f() {
-  fetch('player.json')
-    .then(res => res.json())
-    .then(data => {
-      const playercard = document.getElementById('playercard-fitsch');
-      playercard.innerHTML = '';
-
-      data.players.forEach((player, index) => {
-        const playerCard = document.createElement('div');
-        playerCard.classList.add('d-flex', 'item2');
-        playerCard.setAttribute('draggable', 'true');
-        playerCard.setAttribute('data-player-index', index); 
-
-        playerCard.innerHTML = `
-          <div class="card-info2">
-            <p class="position">${player.position}</p>
-            <p class="rating">${player.rating}</p>
-            <img src="${player.flag}" alt="flag" class="flag" />
-          </div>
-          <div class="card-image2">
-            <img src="${player.photo}" alt="${player.name}" />
-          </div>
-        `;
-
-        
-        playerCard.addEventListener('dragstart', (event) => {
-          isDragging = true;
-          event.dataTransfer.setData('playerIndex', index); 
-        });
-        
-        playerCard.addEventListener('dragend', () => {
-          isDragging = false;
-        });
-
-        playercard.appendChild(playerCard);
-      });
-    })
-    .catch(error => console.error('Error fetching data:', error));
+  fetch('player.json') 
+  .then(res => res.json())
+  .then(data => {
+    
+    const playercard = document.getElementById('playercard-fitsch');
+    playercard.innerHTML = '';
+    
+    
+    data.players.forEach(player => {
+      const playerCard = document.createElement('div');
+      playerCard.setAttribute('draggable', 'true');
+      playerCard.classList.add('d-flex', 'item2');
+      
+      playerCard.innerHTML = 
+      ` <div class="d-flex item2" dragable="true"><div class="card-info2">
+      <p class="position">${player.position}</p>
+      <p class="rating">${player.rating}</p>
+      <img src="${player.flag}" alt="flag" class="flag" />
+      </div>
+      <div class="card-image2">
+      <img src="${player.photo}" alt="${player.name}" />
+      </div></div></div>`
+      ;
+      
+      playercard.appendChild(playerCard);
+    });
+    dragItem();
+  })
+  .catch(error => console.error('Error fetching data:', error));
+  
 }
+
+let drag = null;
+// let divs = Document.querySelectorAll('.parent1.div1 .parent1.div2 .parent1.div3 .parent1.div4 .parent1.div5 .parent1.div6 .parent1.div7 .parent1.div 8 .parent1.div9 .parent1.div10 .parent1.div10');
+let divs = document.querySelectorAll('.parent1 > div');
+
+function dragItem(){
+  let players = document.querySelectorAll('.d-flex[draggable="true"]');
+  players.forEach(player =>{
+
+  player.addEventListener('dragstart' , function(e){
+    drag = player;
+    player.style.opacity = '0.5';
+    // console.log('dragstar');
+    // console.log(player);
+    // console.log('e.target');
+  })
+
+  player.addEventListener('dragend' , function(e){
+    drag = null;
+    player.style.opacity = '1';
+    // console.log('dragend');
+    // console.log(player);
+    // console.log('e.target');
+  })
+  divs.forEach(div =>{
+    div.addEventListener('dragover',function(e){
+      e.preventDefault();
+
+      console.log('dragover');
+      this.style.background = '#090';
+    })
+
+    div.addEventListener('dragleave', function(){
+      this.style.background = '##333';
+    })
+
+    div.addEventListener('drop',function(){
+      div.append(drap);
+    })
+
+
+  })
+
+ })
+
+};
+
+
+
+
 
 const openModalButton = document.getElementById('openModal');
 const semiPage = document.getElementById('semiPage');
 const closebtn = document.querySelector('.close');
-
-let isDragging = false; 
-
 
 openModalButton.addEventListener('click', () => {
   semiPage.classList.add('show');
   f(); 
 });
 
-
 closebtn.addEventListener('click', () => {
   semiPage.classList.remove('show');
 });
 
-semiPage.addEventListener('mouseleave', (event) => {
-  
-  const relatedTarget = event.relatedTarget || event.toElement;
-  
-  
-  if (isDragging) return;
-  
-  
-  if (relatedTarget && semiPage.contains(relatedTarget)) return;
-  
-
-  semiPage.classList.remove('show');
-});
 
 
-function enableDrop() {
-  const lineupDivs = document.querySelectorAll('.parent1 .div1, .parent1 .div2, .parent1 .div3, .parent1 .div4, .parent1 .div5, .parent1 .div6, .parent1 .div7, .parent1 .div8, .parent1 .div9, .parent1 .div10, .parent1 .div11');
 
-  lineupDivs.forEach(div => {
-    div.addEventListener('dragover', (event) => {
-      event.preventDefault(); 
-    });
 
-    div.addEventListener('drop', (event) => {
-      event.preventDefault();
-      const playerIndex = event.dataTransfer.getData('playerIndex');
-      updateLineup(playerIndex, div);
-      semiPage.classList.remove('show'); 
-    });
-  });
-}
 
-function updateLineup(playerIndex, div) {
-  fetch('player.json')
-    .then(res => res.json())
-    .then(data => {
-      const player = data.players[playerIndex];
-      div.querySelector('.position').textContent = player.position;
-      div.querySelector('.rating').textContent = player.rating;
-      div.querySelector('.flag').src = player.flag;
-      div.querySelector('img').src = player.photo;
-    })
-    .catch(error => console.error('Error updating lineup:', error));
+function openModal() {
+  var modalElement = document.getElementById('addPlayerModal');
+  var modal = new bootstrap.Modal(modalElement); 
+  modal.show(); 
 }
 
 
-document.addEventListener('DOMContentLoaded', () => {
-  enableDrop();
-});
+
+
 
 
 
@@ -208,7 +214,7 @@ function addCard(position, physical, defending, dribbling, passing, shooting, cl
   const container = document.getElementById('playercard-fitsch');
   const card =  `
   
-  <div class="d-flex item2">
+  <div class="zakaria">
       <div class="card-info2">
         <p class="position">${position}</p>
         <p class="rating">${shooting}</p>

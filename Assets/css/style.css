@@ -70,23 +70,29 @@
 /* card */
 #playercard-fitsch {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); 
+  grid-template-columns: repeat(4, 1fr); 
   gap: 10px; 
   justify-items: center; 
   margin-top: 20px;
 }
 
-
-.d-flex.item2 {
+.d-flex {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  cursor: move;
+  /* background-color: ; */
   /* background-color: red; */
   border-radius: 12px;
+}
+
+.d-flex .item2 {
   padding: 5px;
   text-align: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 100%; 
   max-width: 100px; 
   height: auto;
- 
+  
 }
 
 
@@ -160,7 +166,7 @@
   z-index: 1;
   top: 0;
   left: 0; 
-  width: 20%; 
+  width: 40%; 
   height: 100%; 
   background-color: #f4f4f4;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5); 
