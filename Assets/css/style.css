@@ -12,11 +12,12 @@
   background-color: aqua;
   padding: 15px;
   border-radius: 10px;
-
+  
 }
 .item img{
   width: 50px;
   height: 50px;
+  
 }
 
 #openModal{
@@ -26,18 +27,31 @@
 /* stath plan */
 
 .parent1 {
-display: grid;
-width: 100%;
-grid-template-columns: repeat(7, 1fr);
-grid-template-rows: repeat(6, 1fr);
-grid-column-gap: 0px;
-grid-row-gap: 0px;
-background-image: url('/Assets/img/field\ football.png');
-background-repeat: no-repeat;
-background-position: cover;
-
-
+  display: grid;
+  width: 100%; 
+  aspect-ratio: 7/6; 
+  max-width: 800px; 
+  margin: 0 auto; 
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  background-image: url('/Assets/img/field football.png');
+  background-size: 675px 620px; 
+  background-position: right center;
+  background-repeat: no-repeat;
 }
+
+
+.parent1 > div {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+}
+
+/* .d-flex.item2 {
+  width: 100%; 
+  max-width: 90px; 
+  aspect-ratio: 1/1; 
+} */
 
 .div1 { grid-area: 6 / 4 / 7 / 5; }
 .div2 { grid-area: 5 / 5 / 6 / 6; }
@@ -53,6 +67,59 @@ background-position: cover;
 /* end stdat */
 
 /* model and lyer  */
+/* card */
+#playercard-fitsch {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 10px; 
+  justify-items: center; 
+  margin-top: 20px;
+}
+
+
+.d-flex.item2 {
+  /* background-color: red; */
+  border-radius: 12px;
+  padding: 5px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%; 
+  max-width: 100px; 
+  height: auto;
+ 
+}
+
+
+.card-image2 img {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+}
+
+
+.card-info2 {
+  font-size: 11px;
+  color: #333;
+}
+
+.card-info2 p {
+  margin: 3px 0;
+}
+
+
+.flag {
+  width: 20px;
+  height: 15px;
+  margin-top: 5px;
+}
+
+
+.close {
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
 
 
 
@@ -93,7 +160,7 @@ background-position: cover;
   z-index: 1;
   top: 0;
   left: 0; 
-  width: 50%; 
+  width: 20%; 
   height: 100%; 
   background-color: #f4f4f4;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5); 
@@ -137,58 +204,6 @@ background-position: cover;
   overflow-y: auto;
 }
 
-
-#playercard-fitsch {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr); 
-  gap: 10px; 
-  justify-items: center; 
-  margin-top: 20px;
-}
-
-
-.d-flex.item2 {
-  background-color: #fff;
-  border-radius: 12px;
-  padding: 5px;
-  text-align: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 100%; 
-  max-width: 100px; 
-  height: auto;
-}
-
-
-.card-image2 img {
-  width: 60px;
-  height: 60px;
-  border-radius: 8px;
-}
-
-
-.card-info2 {
-  font-size: 11px;
-  color: #333;
-}
-
-.card-info2 p {
-  margin: 3px 0;
-}
-
-
-.flag {
-  width: 20px;
-  height: 15px;
-  margin-top: 5px;
-}
-
-
-.close {
-  font-size: 24px;
-  font-weight: bold;
-  cursor: pointer;
-  margin-bottom: 10px;
-}
 
 
 

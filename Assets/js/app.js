@@ -1,18 +1,15 @@
-
-
-
 function f() {
-  fetch('player.json') 
+  fetch('player.json')
     .then(res => res.json())
     .then(data => {
-    
       const playercard = document.getElementById('playercard-fitsch');
       playercard.innerHTML = '';
 
-      
-      data.players.forEach(player => {
+      data.players.forEach((player, index) => {
         const playerCard = document.createElement('div');
         playerCard.classList.add('d-flex', 'item2');
+        playerCard.setAttribute('draggable', 'true');
+        playerCard.setAttribute('data-player-index', index); 
 
         playerCard.innerHTML = `
           <div class="card-info2">
@@ -25,25 +22,130 @@ function f() {
           </div>
         `;
 
+        
+        playerCard.addEventListener('dragstart', (event) => {
+          isDragging = true;
+          event.dataTransfer.setData('playerIndex', index); 
+        });
+        
+        playerCard.addEventListener('dragend', () => {
+          isDragging = false;
+        });
+
         playercard.appendChild(playerCard);
       });
     })
     .catch(error => console.error('Error fetching data:', error));
 }
 
-
 const openModalButton = document.getElementById('openModal');
 const semiPage = document.getElementById('semiPage');
 const closebtn = document.querySelector('.close');
+
+let isDragging = false; 
+
 
 openModalButton.addEventListener('click', () => {
   semiPage.classList.add('show');
   f(); 
 });
 
+
 closebtn.addEventListener('click', () => {
   semiPage.classList.remove('show');
 });
+
+semiPage.addEventListener('mouseleave', (event) => {
+  
+  const relatedTarget = event.relatedTarget || event.toElement;
+  
+  
+  if (isDragging) return;
+  
+  
+  if (relatedTarget && semiPage.contains(relatedTarget)) return;
+  
+
+  semiPage.classList.remove('show');
+});
+
+
+function enableDrop() {
+  const lineupDivs = document.querySelectorAll('.parent1 .div1, .parent1 .div2, .parent1 .div3, .parent1 .div4, .parent1 .div5, .parent1 .div6, .parent1 .div7, .parent1 .div8, .parent1 .div9, .parent1 .div10, .parent1 .div11');
+
+  lineupDivs.forEach(div => {
+    div.addEventListener('dragover', (event) => {
+      event.preventDefault(); 
+    });
+
+    div.addEventListener('drop', (event) => {
+      event.preventDefault();
+      const playerIndex = event.dataTransfer.getData('playerIndex');
+      updateLineup(playerIndex, div);
+      semiPage.classList.remove('show'); 
+    });
+  });
+}
+
+function updateLineup(playerIndex, div) {
+  fetch('player.json')
+    .then(res => res.json())
+    .then(data => {
+      const player = data.players[playerIndex];
+      div.querySelector('.position').textContent = player.position;
+      div.querySelector('.rating').textContent = player.rating;
+      div.querySelector('.flag').src = player.flag;
+      div.querySelector('img').src = player.photo;
+    })
+    .catch(error => console.error('Error updating lineup:', error));
+}
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  enableDrop();
+});
+
+
+
+function enableDrop() {
+  const lineupDivs = document.querySelectorAll('.parent1 .div1, .parent1 .div2, .parent1 .div3, .parent1 .div4, .parent1 .div5, .parent1 .div6, .parent1 .div7, .parent1 .div8, .parent1 .div9, .parent1 .div10, .parent1 .div11');
+
+  lineupDivs.forEach(div => {
+    div.addEventListener('dragover', (event) => {
+      event.preventDefault(); 
+    });
+
+    div.addEventListener('drop', (event) => {
+      event.preventDefault();
+      const playerIndex = event.dataTransfer.getData('playerIndex');
+      updateLineup(playerIndex, div);
+
+      semiPage.classList.remove('show'); 
+    });
+  });
+}
+
+
+function updateLineup(playerIndex, div) {
+  fetch('player.json')
+    .then(res => res.json())
+    .then(data => {
+      const player = data.players[playerIndex];
+      div.querySelector('.position').textContent = player.position;
+      div.querySelector('.rating').textContent = player.rating;
+      div.querySelector('.flag').src = player.flag;
+      div.querySelector('img').src = player.photo;
+    })
+    .catch(error => console.error('Error updating lineup:', error));
+}
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  enableDrop();
+});
+
+
+
 
 
 
@@ -130,6 +232,6 @@ function addCard(position, physical, defending, dribbling, passing, shooting, cl
 //   document.getElementById("modalsecond").style.display = "block"
 // }
 
-
+{/* <button onclick="editPlayer"></button> */}
 
 
