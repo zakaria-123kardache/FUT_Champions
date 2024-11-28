@@ -26,6 +26,17 @@
 
 /* stath plan */
 
+
+
+/* model and lyer  */
+/* card */
+#playercard-fitsch {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 10px; 
+  justify-items: center; 
+  margin-top: 20px;
+}
 .parent1 {
   display: grid;
   width: 100%; 
@@ -35,7 +46,7 @@
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(6, 1fr);
   background-image: url('/Assets/img/field football.png');
-  background-size: 675px 620px; 
+  background-size: 735px 620px; 
   background-position: right center;
   background-repeat: no-repeat;
 }
@@ -65,23 +76,12 @@
 .div10 { grid-area: 1 / 3 / 2 / 4; }
 .div11 { grid-area: 1 / 5 / 2 / 6; }
 /* end stdat */
-
-/* model and lyer  */
-/* card */
-#playercard-fitsch {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); 
-  gap: 10px; 
-  justify-items: center; 
-  margin-top: 20px;
-}
-
 .d-flex {
   display: grid;
   grid-template-columns: repeat(2,1fr);
   cursor: move;
   /* background-color: ; */
-  /* background-color: red; */
+  background-color: red;
   border-radius: 12px;
 }
 
@@ -166,7 +166,7 @@
   z-index: 1;
   top: 0;
   left: 0; 
-  width: 40%; 
+  width: 22%; 
   height: 100%; 
   background-color: #f4f4f4;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5); 
