@@ -29,7 +29,7 @@ function f() {
       });
       dragItem();
     })
-    .cacth(error => console.error('Error fetching data:', error));
+    .catch(error => console.error('Error fetching data:', error));
 
 }
 
@@ -75,27 +75,85 @@ function dragItem() {
       // })
 
       div.addEventListener('drop', function () {
+
+        const playerPosition = drag.querySelector('.position').textContent.trim();
+        const divPosition = this.getAttribute('data-position');
+
+        const messag = document.getElementById('messag');
+
+        
+
+        if (playerPosition === divPosition) {
+
+          messag.textContent = '';
+          messag.classList.add('hidden');
+
         if (!this.hasChildNodes()) {
           
           this.appendChild(drag);
-        } else {
-          
-          const playerstaduim = this.firstChild; 
-          const switsch = drag.parentNode; 
-      
-          
-          this.replaceChild(drag, playerstaduim);
-          switsch.appendChild(playerstaduim);
-        }
-      });
-      
+        }else {
+      const playerstaduim = this.firstChild;
+      const switsch = drag.parentNode;
+     
+      this.replaceChild(drag, playerstaduim);
+      switsch.appendChild(playerstaduim);
+    }
+  } else {
+    // Show warning message
+    messag.textContent = `can't remplaces das ${playerPosition} here`;
+    messag.classList.remove('hidden');
+     
+  }
+  setTimeout(() => {
+    messag.classList.add('hidden');
+  }, 3000);
 
 
-    })
+    });
 
-  })
+  });
+  });
 
 };
+
+function validateFormation() {
+  let valid = true;
+
+  divs.forEach(div => {
+    const divPosition = div.getAttribute('data-position');
+    const player = div.querySelector('.position');
+
+    if (!player || player.textContent.trim() !== divPosition) {
+      valid = false;
+    }
+  });
+
+  if (valid) {
+    alert("formation players accepte");
+  } else {
+    alert("is it erur in Formation u can changes");
+  }
+}
+
+
+document.getElementById('validateBtn').addEventListener('click', validateFormation);
+
+// waring 
+function showmessag(message) {
+  const messag = document.getElementById('messag');
+  messag.textContent = message;
+  messag.classList.remove('hidden');
+  
+  
+  setTimeout(() => {
+    messag.classList.add('hidden');
+  }, 3000);
+}
+
+
+
+
+
 
 
 

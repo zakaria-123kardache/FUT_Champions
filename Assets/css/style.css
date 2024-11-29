@@ -264,3 +264,26 @@
 
 
 
+/* warning */
+
+#messag{
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ff6666;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-align: center;
+  display: none;
+  z-index: 1000;
+}
+
+#messag.hidden {
+  display: none;
+}
+
+#messag:not(.hidden) {
+  display: block;
+}
