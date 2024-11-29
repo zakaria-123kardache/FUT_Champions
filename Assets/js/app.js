@@ -21,7 +21,7 @@ function f() {
       <img src="${player.flag}" alt="flag" class="flag" />
       </div>
       <div class="card-image2">
-      <img src="${player.photo}" alt="${player.name}" />
+      <img src="${player.photo}" alt="" />
       </div></div></div>`
           ;
 
@@ -45,7 +45,7 @@ function dragItem() {
       drag = player;
       player.style.opacity = '0.5';
       // console.log('dragstar');
-      // console.log(player);
+      // console.log(player);.
       // console.log('e.target');
     })
 
@@ -99,7 +99,7 @@ function dragItem() {
       switsch.appendChild(playerstaduim);
     }
   } else {
-    // Show warning message
+    
     messag.textContent = `can't remplaces das ${playerPosition} here`;
     messag.classList.remove('hidden');
      
@@ -115,30 +115,34 @@ function dragItem() {
   });
 
 };
+ 
 
-function validateFormation() {
-  let valid = true;
+// function validateFormation() {
+//   let valid = true;
 
-  divs.forEach(div => {
-    const divPosition = div.getAttribute('data-position');
-    const player = div.querySelector('.position');
+//   divs.forEach(div => {
+//     const divPosition = div.getAttribute('data-position');
+//     const player = div.querySelector('.position');
 
-    if (!player || player.textContent.trim() !== divPosition) {
-      valid = false;
-    }
-  });
+//     if (!player || player.textContent.trim() !== divPosition) {
+//       valid = false;
+//     }
+//   });
 
-  if (valid) {
-    alert("formation players accepte");
-  } else {
-    alert("is it erur in Formation u can changes");
-  }
-}
+//   if (valid) {
+//     alert("formation players accepte");
+//   } else {
+//     alert("is it erur in Formation u can changes");
+//   }
+// }
 
 
-document.getElementById('validateBtn').addEventListener('click', validateFormation);
+// document.getElementById('validateBtn').addEventListener('click', validateFormation);
 
 // waring 
+
+// form reset
+
 function showmessag(message) {
   const messag = document.getElementById('messag');
   messag.textContent = message;
@@ -149,12 +153,6 @@ function showmessag(message) {
     messag.classList.add('hidden');
   }, 3000);
 }
-
-
-
-
-
-
 
 
 
@@ -171,12 +169,9 @@ closebtn.addEventListener('click', () => {
   semiPage.classList.remove('show');
 });
 
-
-
-
-
-
+let errorel = document.getElementById('error');
 function addPlayer() {
+  const form = document.getElementById('form');
   const position = document.getElementById('position').value;
   const Name = document.getElementById('Name').value;
   const nationality = document.getElementById('nationality').value;
@@ -191,6 +186,67 @@ function addPlayer() {
   const dribbling = document.getElementById('dribbling').value;
   const defending = document.getElementById('defending').value;
   const physical = document.getElementById('physical').value;
+
+ form.addEventListener('submit',function(e){
+  
+  let error = [];
+  if(Name.value === !'' || Name == null){
+    error.push('name of player is important')
+  }
+  if(Name.value.length <8){
+    error.push('Club name shold be more of 6 caractere')
+  }
+  if(Name.value.length >20){
+    error.push('Club name shold be more au moin 20 caractere')
+  }
+
+
+  if(club.value.length <8){
+    error.push('Club name of clube shold be more of 6 caractere')
+  }
+  if(club.value.length >20){
+    error.push('Club name of clube shold be more au moin 20 caractere')
+  }
+
+  if(club.value === !'' || Name == null){
+    error.push('club is important Write a club name ')
+  }
+  
+  if(nationality.value === (url[i].value[0] == 'h' || url[i].value[1] == 't' || url[i].value[2] == 't' || url[i].value[3] == 'p' 
+    || url[i].value[4] == 's' || url[i].value[5] == ':' || url[i].value[6] == '/' || url[i].value[7] == '/' || url[i-1].value[i-1] == '.png') ){
+    error.push('Url is important')
+  }
+  if(flag.value === (url[i].value[0] == 'h' || url[i].value[1] == 't' || url[i].value[2] == 't' || url[i].value[3] == 'p' 
+    || url[i].value[4] == 's' || url[i].value[5] == ':' || url[i].value[6] == '/' || url[i].value[7] == '/' || url[i-1].value[i-1] == '.png') ){
+    error.push('Url is important')
+  }
+  if(logo.value === (url[i].value[0] == 'h' || url[i].value[1] == 't' || url[i].value[2] == 't' || url[i].value[3] == 'p' 
+    || url[i].value[4] == 's' || url[i].value[5] == ':' || url[i].value[6] == '/' || url[i].value[7] == '/' || url[i-1].value[i-1] == '.png') ){
+    error.push('Url is important')
+  }
+
+
+  // 
+  // (url[i].value[0] == 'h' || url[i].value[1] == 't' || url[i].value[2] == 't' || url[i].value[3] == 'p' 
+  //   || url[i].value[4] == 's' || url[i].value[5] == ':' || url[i].value[6] == '/' || url[i].value[7] == '/' || url[i-1].value[i-1] == '.png')
+  // https://.png
+  // 
+
+  
+
+
+
+
+  if(error.length > 0){
+    e.preventDefault();
+    errorel.innerHTML= error.join('<br>');
+  }
+  
+
+  // alert('form');
+ })
+
+
 
 
   if (!position || !Name || !nationality || !photo || !flag || !rating || !logo || !club || !pace || !shooting || !passing || !dribbling || !defending || !physical) {
@@ -242,5 +298,7 @@ function addCard(position, physical, defending, dribbling, passing, shooting, cl
 // }
 
 {/* <button onclick="editPlayer"></button> */ }
+
+
 
 
