@@ -169,6 +169,7 @@ closebtn.addEventListener('click', () => {
   semiPage.classList.remove('show');
 });
 
+
 let errorel = document.getElementById('error');
 function addPlayer() {
   const form = document.getElementById('form');
@@ -190,64 +191,104 @@ function addPlayer() {
  form.addEventListener('submit',function(e){
   
   let error = [];
-  if(Name.value === !'' || Name == null){
-    error.push('name of player is important')
-  }
-  if(Name.value.length <8){
-    error.push('Club name shold be more of 6 caractere')
-  }
-  if(Name.value.length >20){
-    error.push('Club name shold be more au moin 20 caractere')
-  }
 
 
-  if(club.value.length <8){
-    error.push('Club name of clube shold be more of 6 caractere')
-  }
-  if(club.value.length >20){
-    error.push('Club name of clube shold be more au moin 20 caractere')
-  }
-
-  if(club.value === !'' || Name == null){
-    error.push('club is important Write a club name ')
-  }
-  
-  if(nationality.value === (url[i].value[0] == 'h' || url[i].value[1] == 't' || url[i].value[2] == 't' || url[i].value[3] == 'p' 
-    || url[i].value[4] == 's' || url[i].value[5] == ':' || url[i].value[6] == '/' || url[i].value[7] == '/' || url[i-1].value[i-1] == '.png') ){
-    error.push('Url is important')
-  }
-  if(flag.value === (url[i].value[0] == 'h' || url[i].value[1] == 't' || url[i].value[2] == 't' || url[i].value[3] == 'p' 
-    || url[i].value[4] == 's' || url[i].value[5] == ':' || url[i].value[6] == '/' || url[i].value[7] == '/' || url[i-1].value[i-1] == '.png') ){
-    error.push('Url is important')
-  }
-  if(logo.value === (url[i].value[0] == 'h' || url[i].value[1] == 't' || url[i].value[2] == 't' || url[i].value[3] == 'p' 
-    || url[i].value[4] == 's' || url[i].value[5] == ':' || url[i].value[6] == '/' || url[i].value[7] == '/' || url[i-1].value[i-1] == '.png') ){
-    error.push('Url is important')
-  }
+if (Name.trim() === '') {
+  error.push(' entre name of player is important');
+}
+if (Name.length < 6) {
+  error.push('name est long');
+}
+if (Name.length > 20) {
+  error.push('Name est court');
+}
 
 
-  // 
-  // (url[i].value[0] == 'h' || url[i].value[1] == 't' || url[i].value[2] == 't' || url[i].value[3] == 'p' 
-  //   || url[i].value[4] == 's' || url[i].value[5] == ':' || url[i].value[6] == '/' || url[i].value[7] == '/' || url[i-1].value[i-1] == '.png')
-  // https://.png
-  // 
+if(club.trim() === '') {
+  error.push('Club name of player is important');
+}
+if(club.length < 6) {
+  error.push('Club name est long');
+}
+if(club.value.length > 20) {
+  error.push('Club name est court');
+}
 
-  
+if (physical.trim() === '' || physical == null){
+  error.push('Pyhysical is important Write a Physicql nu;ber ')
+}
+if(physical<= 1 || physical > 100){
+  error.push('error just enter biywen a 1 to 100 ')
+}
+
+if(defending.trim() === '' || defending == null){
+  error.push('defending is important Write a defending nu;ber ')
+}
+if(defending <= 1 && defending > 100){
+  error.push('error defending just enter biywen a 1 to 100 ')
+}
+
+if(dribbling.trim() === '' || dribbling == null){
+  error.push('dribbling is important Write a dribbling nu;ber ')
+}
+if(dribbling <= 1 && dribbling > 100){
+  error.push('error dribbling just enter biywen a 1 to 100 ')
+}
+
+if(passing.trim() === '' || passing == null){
+  error.push('passing is important Write a passing nu;ber ')
+}
+if(passing <= 1 && passing > 100){
+  error.push('error passing just enter biywen a 1 to 100 ')
+}
+
+if(shooting.trim() === '' || shooting == null){
+  error.push('shooting is important Write a shooting nu;ber ')
+}
+if(shooting <= 1 && shooting > 100){
+  error.push('error shooting just enter biywen a 1 to 100 ')
+}
+
+if(pace.trim() === '' || pace == null){
+  error.push('pace is important Write a pace nu;ber ')
+}
+if(pace <= 1 && pace > 100){
+  error.push('error pace just enter biywen a 1 to 100 ')
+}
+
+if(shooting.trim() === '' || shooting == null){
+  error.push('shooting is important Write a pace nu;ber ')
+}
+if(shooting <= 1 && shooting > 100){
+  error.push('error shooting just enter biywen a 1 to 100 ')
+}
 
 
+
+      function validurl(url) {
+        return url && 
+               url.startsWith('https://') && 
+               url.endsWith('.png');
+      }
+      
+      if (!validurl(nationality.value)) {
+        error.push('Nationality URL is important');
+      }
+      
+      if (!validurl(flag.value)) {
+        error.push('Flag URL is important');
+      }
+      
+      if (!validurl(logo.value)) {
+        error.push('Logo URL is important');
+      }
 
 
   if(error.length > 0){
     e.preventDefault();
     errorel.innerHTML= error.join('<br>');
-  }
-  
-
-  // alert('form');
- })
-
-
-
+  }else 
+ 
 
   if (!position || !Name || !nationality || !photo || !flag || !rating || !logo || !club || !pace || !shooting || !passing || !dribbling || !defending || !physical) {
     alert("Please fill in all fields.");
@@ -268,6 +309,9 @@ function addPlayer() {
     closeModal();
   }
 }
+)};
+
+
 
 function closeModal() {
   var modalElement = document.getElementById('addPlayerModal');
@@ -298,7 +342,6 @@ function addCard(position, physical, defending, dribbling, passing, shooting, cl
 // }
 
 {/* <button onclick="editPlayer"></button> */ }
-
 
 
 
