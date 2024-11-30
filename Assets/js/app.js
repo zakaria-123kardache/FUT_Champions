@@ -246,6 +246,7 @@ function addCard(position, physical, defending, dribbling, passing, shooting, cl
     <div class="card-image2">
       <img src="${imageSrc}" alt="" />
     </div>
+    
   `;
    
   container.appendChild(card);

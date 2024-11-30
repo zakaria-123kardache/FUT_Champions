@@ -348,6 +348,92 @@
 
 <!-- eend modal for editi player -->
 
+<!-- Start Model for EditeCreatPlayer -->
+
+<div class="modal fade" id="edit-player-modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Editing CreatPalyer iNformation</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="mb-3">
+        <label>Position</label>
+        <select id="CRedit-position" class="form-select" autocomplete="off">
+          <option value="RW">RW</option>
+          <option value="ST">ST</option>
+          <option value="CM">CM</option>
+          <option value="LW">LW</option>
+          <option value="GK">GK</option>
+          <option value="CDM">CDM</option>
+          <option value="CB">CB</option>
+          <option value="LB">LB</option>
+          <option value="RB">RB</option>
+        </select>
+      
+      </div>
+      <div class="mb-3">
+        <label for="Name" class="form-label">Name:</label>
+        <input type="text" id="CRedit-name" class="form-control"/>
+      </div>
+      <div class="mb-3">
+        <label for="Nationality" class="form-label">Nationality:</label>
+        <input type="text" id="CRedit-nationality" class="form-control"/>
+      </div>
+      <div class="mb-3">
+        <label for="Flag" class="form-label">Flag:</label>
+        <input type="text" id="CRedit-flag" class="form-control"/>
+      </div>
+      <div class="mb-3">
+        <label for="Club" class="form-label">Club:</label>
+        <input type="text" id="CRedit-club" class="form-control"/>
+      </div>
+      <div class="mb-3">
+        <label for="Logo" class="form-label">Logo:</label>
+        <input type="text" id="CRedit-logo" class="form-control"/>
+      </div>
+      <div class="mb-3">
+        <label for="Pace" class="form-label">Pace:</label>
+        <input type="number" id="CRedit-pace" class="form-control"/>
+      </div>
+      <div class="mb-3">
+        <label for="Shooting" class="form-label">Shooting:</label>
+        <input type="number" id="CRedit-shooting" class="form-control"/>
+      </div>
+      <div class="mb-3">
+        <label for="Passing" class="form-label">Passing:</label>
+        <input type="number" id="CRedit-passing" class="form-control"/>
+      </div>
+      <div class="mb-3">
+        <label for="Dribbling" class="form-label">Dribbling:</label>
+        <input type="number" id="CRedit-dribbling" class="form-control">
+      </div>
+      <div class="mb-3">
+        <label for="defending" class="form-label">Defending:</label>
+        <input type="number" id="CRedit-defending" class="form-control" autocomplete="off"/>
+      </div>
+      <div class="mb-3">
+        <label for="physical" class="form-label">Physical:</label>
+        <input type="number" id="CRedit-physical" class="form-control" autocomplete="off"/>
+      </div>
+      <div class="mb-3">
+        <label for="rating" class="form-label">Rating:</label>
+        <input type="number" id="CRedit-rating" class="form-control" autocomplete="off"/>
+      </div>
+      <div class="mb-3">
+        <label>Photo</label>
+        <input type="file" id="CRedit-photo" class="form-control">
+      </div>
+    </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إلغاء</button>
+        <button type="button" class="btn btn-primary" onclick="savePlayerEdits()">حفظ التعديلات</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ENd  Model for EditeCreatPlayer -->
+
 
 
 
