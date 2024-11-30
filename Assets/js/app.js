@@ -21,13 +21,19 @@ function f() {
         playerCard.classList.add('d-flex', 'item2');
 
         playerCard.innerHTML =
-          ` <div class="card-info2"> <p class="position">${player.position}</p>
+          ` <div class="card-info2"> 
+
+          <p class="position">${player.position}</p>
       <p class="rating">${player.rating}</p>
       <img src="${player.flag}" alt="flag" class="flag" />
+
       </div>
+
       <div class="card-image2">
       <img src="${player.photo}" alt="" />
-      </div></div>`
+      </div>
+
+      </div>`
           ;
 
         playercard.appendChild(playerCard);
@@ -249,91 +255,164 @@ function addCard(position, physical, defending, dribbling, passing, shooting, cl
 
 // editng player
 
-
-// editng player
-
-function openEditModal(id, position, rating, flag, photo, name, physical, defending, dribbling, passing, shooting, pace, logo, club, nationality) {
-  document.getElementById('position').value = position;
-  document.getElementById('rating').value = rating;
-  document.getElementById('flag').value = flag;
-  document.getElementById('photo').value = '';
-  document.getElementById('Name').value = name;
-  document.getElementById('nationality').value = nationality;
-  document.getElementById('club').value = club;
-  document.getElementById('logo').value = logo;
-  document.getElementById('pace').value = pace;
-  document.getElementById('shooting').value = shooting;
-  document.getElementById('passing').value = passing;
-  document.getElementById('dribbling').value = dribbling;
-  document.getElementById('defending').value = defending;
-  document.getElementById('physical').value = physical;
-
+function openEditModal(playerId) {
+  const playerCard = document.querySelector(`.item2[data-player-id="${playerId}"]`);
   
-  document.getElementById('edit-player-id').value = id;
+  if (playerCard) { 
+    const position = playerCard.querySelector('.position').textContent;
+    const rating = playerCard.querySelector('.rating').textContent;
+    const flagSrc = playerCard.querySelector('.flag').src;
+    const photoSrc = playerCard.querySelector('.card-image2 img').src;
+    const name = playerCard.querySelector('.player-name') ? playerCard.querySelector('.player-name').textContent : '';
+    const club = playerCard.querySelector('.club-name') ? playerCard.querySelector('.club-name').textContent : '';
+    const logoSrc = playerCard.querySelector('.club-logo') ? playerCard.querySelector('.club-logo').src : '';
+    const pace = playerCard.querySelector('.pace') ? playerCard.querySelector('.pace').textContent : '';
+    const shooting = playerCard.querySelector('.shooting') ? playerCard.querySelector('.shooting').textContent : '';
+    const passing = playerCard.querySelector('.passing') ? playerCard.querySelector('.passing').textContent : '';
+    const dribbling = playerCard.querySelector('.dribbling') ? playerCard.querySelector('.dribbling').textContent : '';
+    const defending = playerCard.querySelector('.defending') ? playerCard.querySelector('.defending').textContent : '';
+    const physical = playerCard.querySelector('.physical') ? playerCard.querySelector('.physical').textContent : '';
+    
+    document.getElementById('edit-player-id').value = playerId;
+    document.getElementById('edit-position').value = position;
+    document.getElementById('edit-name').value = name;
+    document.getElementById('edit-nationality').value = ''; 
+    document.getElementById('edit-flag').value = flagSrc;
+    document.getElementById('edit-club').value = club;
+    document.getElementById('edit-logo').value = logoSrc;
+    document.getElementById('edit-pace').value = pace;
+    document.getElementById('edit-shooting').value = shooting;
+    document.getElementById('edit-passing').value = passing;
+    document.getElementById('edit-dribbling').value = dribbling;
+    document.getElementById('edit-defending').value = defending;
+    document.getElementById('edit-physical').value = physical;
 
-  const editModal = new bootstrap.Modal(document.getElementById('Editplayer'));
-  editModal.show();
-}
 
-function saveEditedPlayer(event) {
-  event.preventDefault();
-
-  const id = document.getElementById('edit-player-id').value;
-
-  const updatedPlayer = {
-    position: document.getElementById('position').value,
-    rating: document.getElementById('rating').value,
-    flag: document.getElementById('flag').value,
-    photo: document.getElementById('photo').files[0] ? URL.createObjectURL(document.getElementById('photo').files[0]) : '',
-    name: document.getElementById('Name').value,
-    nationality: document.getElementById('nationality').value,
-    club: document.getElementById('club').value,
-    logo: document.getElementById('logo').value,
-    pace: document.getElementById('pace').value,
-    shooting: document.getElementById('shooting').value,
-    passing: document.getElementById('passing').value,
-    dribbling: document.getElementById('dribbling').value,
-    defending: document.getElementById('defending').value,
-    physical: document.getElementById('physical').value
-  };
-
-  updateplayer(id, updatedPlayer);
-}
-
-function updateplayer(id, updatedPlayer) {
-  const playerCard = document.getElementById(player-${id});
-
-  if (playerCard) {
-    playerCard.querySelector('.position').textContent = updatedPlayer.position;
-    playerCard.querySelector('.rating').textContent = updatedPlayer.rating;
-    playerCard.querySelector('.flag').src = updatedPlayer.flag;
-    playerCard.querySelector('.player-photo').src = updatedPlayer.photo || '';
-    playerCard.querySelector('.card-name').textContent = updatedPlayer.name;
-    playerCard.querySelector('.nationality').textContent = updatedPlayer.nationality;
-    playerCard.querySelector('.club').textContent = updatedPlayer.club;
+    document.getElementById('Editplayer').setAttribute('data-current-player-id', playerId);
   }
 }
 
-function updateplayer(updatedPlayer) {
-  const playerCards = document.querySelectorAll('.player-card');
+function updatePlayer() {
 
-  playerCards.forEach(card => {
-    const playerName = card.querySelector('.card-name').textContent;  
+  const playerId = document.getElementById('Editplayer').getAttribute('data-current-player-id');
+  const playerCard = document.querySelector(`.item2[data-player-id="${playerId}"]`);
+  
+  if (playerCard) {
+    const newPace = document.getElementById('edit-pace').value;
+    const newShooting = document.getElementById('edit-shooting').value;
+    const newPassing = document.getElementById('edit-passing').value;
+    const newDribbling = document.getElementById('edit-dribbling').value;
+    const newDefending = document.getElementById('edit-defending').value;
+    const newPhysical = document.getElementById('edit-physical').value;
+    const newPosition = document.getElementById('edit-position').value;
+    const newName = document.getElementById('edit-name').value;
+    const newNationality = document.getElementById('edit-nationality').value;
+    const newFlag = document.getElementById('edit-flag').value;
+    const newClub = document.getElementById('edit-club').value;
+    const newLogo = document.getElementById('edit-logo').value;
+    const newRating = document.getElementById('edit-rating').value;
+    const newPhotoFile = document.getElementById('edit-photo').files[0];
 
-    if (playerName === updatedPlayer.name) {
+    const positionEl = playerCard.querySelector('.position');
+    if (positionEl) positionEl.textContent = newPosition;
 
-      card.querySelector('.position').textContent = updatedPlayer.position;
-      card.querySelector('.rating').textContent = updatedPlayer.rating;
-      card.querySelector('.flag').src = updatedPlayer.flag;
-      card.querySelector('.player-photo').src = updatedPlayer.photo || '';  
-      card.querySelector('.card-name').textContent = updatedPlayer.name;
-      card.querySelector('.nationality').textContent = updatedPlayer.nationality;
-      card.querySelector('.club').textContent = updatedPlayer.club;
+    const RatingEl = playerCard.querySelector('.rating');
+    if (positionEl) positionEl.textContent = newRating;
 
+    const nameEl = playerCard.querySelector('.player-name');
+    if (nameEl) nameEl.textContent = newName;
+
+    const clubEl = playerCard.querySelector('.club-name');
+    if (clubEl) clubEl.textContent = newClub;
+
+    const logoEl = playerCard.querySelector('.club-logo');
+    if (logoEl) logoEl.src = newLogo;
+
+    const flagEl = playerCard.querySelector('.flag');
+    if (flagEl) flagEl.src = newFlag;
+
+    if (newPhotoFile) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const photoEl = playerCard.querySelector('.card-image2 img');
+        if (photoEl) photoEl.src = e.target.result;
+      };
+      reader.readAsDataURL(newPhotoFile);
     }
-  });
+
+    const statsToUpdate = [
+      { selector: '.pace', value: newPace },
+      { selector: '.shooting', value: newShooting },
+      { selector: '.passing', value: newPassing },
+      { selector: '.dribbling', value: newDribbling },
+      { selector: '.defending', value: newDefending },
+      { selector: '.physical', value: newPhysical },
+      { selector: '.position', value: newPosition },
+      { selector: '.Name', value: newName },
+      { selector: '.nationality', value: newNationality },
+      { selector: '.flag', value: newFlag },
+      { selector: '.club', value: newClub },
+      { selector: '.logo', value: newLogo },
+      { selector: '.rating', value: newRating },
+      { selector: '.photo', value: newPhotoFile },
+    ];
+
+    statsToUpdate.forEach(stat => {
+      const statEl = playerCard.querySelector(stat.selector);
+      if (statEl) statEl.textContent = stat.value;
+    });
+
+    var modalElement = document.getElementById('Editplayer');
+    var modal = bootstrap.Modal.getInstance(modalElement);
+    modal.hide();
+  }
 }
 
+function f() {
+  fetch('player.json')
+    .then(res => res.json())
+    .then(data => {
+      data.players.forEach((player, index) => {
+        if (!player.id) {
+          player.id = index + 1;  
+        }
+      });
+
+      const playercard = document.getElementById('playercard-fitsch');
+      playercard.innerHTML = '';
+
+      data.players.forEach((player, index) => {
+        const playerCard = document.createElement('div');
+        playerCard.setAttribute('draggable', 'true');
+        playerCard.classList.add('d-flex', 'item2');
+        playerCard.setAttribute('data-player-id', player.id);
+
+        playerCard.innerHTML = `
+          <div class="card-info2">
+            <p class="position">${player.position}</p>
+            <p class="rating">${player.rating}</p>
+           
+            <img src="${player.flag}" alt="flag" class="flag" />
+            
+            </div>
+          <div class="card-image2">
+            <img src="${player.photo}" alt="" />
+          </div>
+          <button class="btn btn-warning edit-btn" 
+              onclick="openEditModal('${player.id}')" 
+              data-bs-toggle="modal" 
+              data-bs-target="#Editplayer">
+              Edit
+            </button>
+        `;
+
+        playercard.appendChild(playerCard);
+      });
+      
+      dragItem();
+    })
+    .catch(error => console.error('Error fetching data:', error));
+}
 
 
 
