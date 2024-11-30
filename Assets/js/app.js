@@ -36,7 +36,7 @@ function f() {
               data-bs-target="#Editplayer">
               Edit
             </button>
-             <button class="btn btn-danger delete-player" onclick="deletePlayer(${player.id})">delet</button>
+             <button class="btn btn-danger delete-player" onclick="deletPlayer(${player.id})">delet</button>
         `;
 
         playercard.appendChild(playerCard);
@@ -373,9 +373,9 @@ function updatePlayer() {
 // delete player json
 function deletPlayer(playerId) {
   
-  const confirm = confirm('confirm ');
+  const confirme = confirm('confirm ');
   
-  if (confirm) {
+  if (confirme) {
     const playerCard = document.querySelector(`.item2[data-player-id="${playerId}"]`);
     
     if (playerCard) {
