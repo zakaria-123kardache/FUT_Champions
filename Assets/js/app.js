@@ -5,6 +5,12 @@ function f() {
     .then(res => res.json())
     .then(data => {
 
+      data.players.forEach((player, index) => {
+        if (!player.id) {
+          player.id = index + 1;  
+        }
+      });
+
       const playercard = document.getElementById('playercard-fitsch');
       playercard.innerHTML = '';
 
@@ -15,9 +21,7 @@ function f() {
         playerCard.classList.add('d-flex', 'item2');
 
         playerCard.innerHTML =
-          ` 
-          <div class="card-info2">
-      <p class="position">${player.position}</p>
+          ` <div class="card-info2"> <p class="position">${player.position}</p>
       <p class="rating">${player.rating}</p>
       <img src="${player.flag}" alt="flag" class="flag" />
       </div>
@@ -218,13 +222,6 @@ function closeModal() {
 
 
 
-function closeModal() {
-  var modalElement = document.getElementById('addPlayerModal');
-  var modal = bootstrap.Modal.getInstance(modalElement);
-  modal.hide();
-}
-
-
 
 function addCard(position, physical, defending, dribbling, passing, shooting, club, pace, logo, flag, nationality, Name, imageSrc) {
   const container = document.getElementById('playercard-fitsch');
@@ -239,7 +236,7 @@ function addCard(position, physical, defending, dribbling, passing, shooting, cl
       <img src="${flag}" alt="flag" class="flag" />
     </div>
     <div class="card-image2">
-      <img src="${imageSrc}" alt="${Name}" />
+      <img src="${imageSrc}" alt="" />
     </div>
   `;
    
@@ -248,12 +245,111 @@ function addCard(position, physical, defending, dribbling, passing, shooting, cl
 }
 
 
+// 
+
+// editng player
+
+
+// editng player
+
+function openEditModal(id, position, rating, flag, photo, name, physical, defending, dribbling, passing, shooting, pace, logo, club, nationality) {
+  document.getElementById('position').value = position;
+  document.getElementById('rating').value = rating;
+  document.getElementById('flag').value = flag;
+  document.getElementById('photo').value = '';
+  document.getElementById('Name').value = name;
+  document.getElementById('nationality').value = nationality;
+  document.getElementById('club').value = club;
+  document.getElementById('logo').value = logo;
+  document.getElementById('pace').value = pace;
+  document.getElementById('shooting').value = shooting;
+  document.getElementById('passing').value = passing;
+  document.getElementById('dribbling').value = dribbling;
+  document.getElementById('defending').value = defending;
+  document.getElementById('physical').value = physical;
+
+  
+  document.getElementById('edit-player-id').value = id;
+
+  const editModal = new bootstrap.Modal(document.getElementById('Editplayer'));
+  editModal.show();
+}
+
+function saveEditedPlayer(event) {
+  event.preventDefault();
+
+  const id = document.getElementById('edit-player-id').value;
+
+  const updatedPlayer = {
+    position: document.getElementById('position').value,
+    rating: document.getElementById('rating').value,
+    flag: document.getElementById('flag').value,
+    photo: document.getElementById('photo').files[0] ? URL.createObjectURL(document.getElementById('photo').files[0]) : '',
+    name: document.getElementById('Name').value,
+    nationality: document.getElementById('nationality').value,
+    club: document.getElementById('club').value,
+    logo: document.getElementById('logo').value,
+    pace: document.getElementById('pace').value,
+    shooting: document.getElementById('shooting').value,
+    passing: document.getElementById('passing').value,
+    dribbling: document.getElementById('dribbling').value,
+    defending: document.getElementById('defending').value,
+    physical: document.getElementById('physical').value
+  };
+
+  updateplayer(id, updatedPlayer);
+}
+
+function updateplayer(id, updatedPlayer) {
+  const playerCard = document.getElementById(player-${id});
+
+  if (playerCard) {
+    playerCard.querySelector('.position').textContent = updatedPlayer.position;
+    playerCard.querySelector('.rating').textContent = updatedPlayer.rating;
+    playerCard.querySelector('.flag').src = updatedPlayer.flag;
+    playerCard.querySelector('.player-photo').src = updatedPlayer.photo || '';
+    playerCard.querySelector('.card-name').textContent = updatedPlayer.name;
+    playerCard.querySelector('.nationality').textContent = updatedPlayer.nationality;
+    playerCard.querySelector('.club').textContent = updatedPlayer.club;
+  }
+}
+
+function updateplayer(updatedPlayer) {
+  const playerCards = document.querySelectorAll('.player-card');
+
+  playerCards.forEach(card => {
+    const playerName = card.querySelector('.card-name').textContent;  
+
+    if (playerName === updatedPlayer.name) {
+
+      card.querySelector('.position').textContent = updatedPlayer.position;
+      card.querySelector('.rating').textContent = updatedPlayer.rating;
+      card.querySelector('.flag').src = updatedPlayer.flag;
+      card.querySelector('.player-photo').src = updatedPlayer.photo || '';  
+      card.querySelector('.card-name').textContent = updatedPlayer.name;
+      card.querySelector('.nationality').textContent = updatedPlayer.nationality;
+      card.querySelector('.club').textContent = updatedPlayer.club;
+
+    }
+  });
+}
+
+
+
+
+
+
 // function showmodal(){
 //   console.log("jajfkajf")
 //   document.getElementById("modalsecond").style.display = "block"
 // }
 
-{/* <button onclick="editPlayer"></button> */ }
 
 
+{/* <button class="btn btn-warning edit-btn" onclick="openEditModal('${player.position}', '${player.rating}', '${player.flag}', '${player.photo}', '${player.Name}', '${player.physical}','${player.defending}','${player.dribbling}'
+  ,'${player.passing}','${player.shooting}','${player.pace}','${player.logo}','${player.club}','${player.nationality}')">Edit</button>  */}
+  // playerCard.setAttribute('id', `player-${player.id}`); 
+  // <button class="btn btn-warning edit-btn" data-bs-toggle="modal" data-bs-target="#Editplayer" onclick="openEditModal('${player.id}', '${player.position}'
+  // , '${player.rating}', '${player.flag}', '${player.photo}', '${player.name}', '${player.physical}', '${player.defending}', '${player.dribbling}',
+  //  '${player.passing}', '${player.shooting}', '${player.pace}', '${player.logo}', '${player.club}', '${player.nationality}')">Edit</button>
 

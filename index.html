@@ -10,6 +10,8 @@
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
       crossorigin="anonymous"
     />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
     <title>FUT-Champ-Ultimate-Team</title>
   </head>
 
@@ -164,7 +166,7 @@
               </div>
               <div class="mb-3">
                 <label for="Name" class="form-label">Name:</label>
-                <input type="text" id="Name" class="form-control" required />
+                <input type="text" id="Name" class="form-control" />
               </div>
               <div class="mb-3">
                 <label for="nationality" class="form-label">nationality:</label>
@@ -177,24 +179,24 @@
               </div>
               <div class="mb-3">
                 <label for="flag" class="form-label">flag:</label>
-                <input type="text" id="flag" class="form-control" placeholder="Enter ur Url flag" required />
+                <input type="text" id="flag" class="form-control" placeholder="Enter ur Url flag" />
               </div>
               <div class="mb-3">
                 <label for="club" class="form-label">club:</label>
-                <input type="text" id="club" class="form-control" required />
+                <input type="text" id="club" class="form-control" />
               </div>
               <div class="mb-3">
                 <label for="logo" class="form-label" >logo:</label>
-                <input type="text" id="logo" class="form-control" placeholder="Enter ur Url LOGO" required />
+                <input type="text" id="logo" class="form-control" placeholder="Enter ur Url LOGO" />
               </div>
               <div class="mb-3">
                 <label for="rating" class="form-label">rating:</label>
-                <input type="number" id="rating" class="form-control" required />
+                <input type="number" id="rating" class="form-control" />
               </div>
 
               <div class="mb-3">
                 <label for="pace" class="form-label">pace:</label>
-                <input type="number" id="pace" class="form-control" required />
+                <input type="number" id="pace" class="form-control" />
               </div>
               <div class="mb-3">
                 <label for="shooting" class="form-label">shooting:</label>
@@ -207,7 +209,7 @@
               </div>
               <div class="mb-3">
                 <label for="passing" class="form-label">passing:</label>
-                <input type="num" id="passing" class="form-control" required />
+                <input type="num" id="passing" class="form-control" />
               </div>
               <div class="mb-3">
                 <label for="dribbling" class="form-label">dribbling:</label>
@@ -256,13 +258,103 @@
 
     <!-- warning msg-->
     <div id="messag" class="hidden"></div>
-    <!--  -->
+
+<!-- Start modal for editing player -->
+
+<div class="modal fade" id="Editplayer" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Editing Player</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="edit-player-id">
+        <div class="mb-3">
+          <label>Position</label>
+          <select id="edit-position" class="form-select" autocomplete="off">
+            <option value="RW">RW</option>
+            <option value="ST">ST</option>
+            <option value="CM">CM</option>
+            <option value="LW">LW</option>
+            <option value="GK">GK</option>
+            <option value="CDM">CDM</option>
+            <option value="CB">CB</option>
+            <option value="LB">LB</option>
+            <option value="RB">RB</option>
+          </select>
+        
+        </div>
+        <div class="mb-3">
+          <label for="Name" class="form-label">Name:</label>
+          <input type="text" id="edit-name" class="form-control"/>
+        </div>
+        <div class="mb-3">
+          <label for="Nationality" class="form-label">Nationality:</label>
+          <input type="text" id="edit-nationality" class="form-control"/>
+        </div>
+        <div class="mb-3">
+          <label for="Flag" class="form-label">Flag:</label>
+          <input type="text" id="edit-flag" class="form-control"/>
+        </div>
+        <div class="mb-3">
+          <label for="Club" class="form-label">Club:</label>
+          <input type="text" id="edit-club" class="form-control"/>
+        </div>
+        <div class="mb-3">
+          <label for="Logo" class="form-label">Logo:</label>
+          <input type="text" id="edit-logo" class="form-control"/>
+        </div>
+        <div class="mb-3">
+          <label for="Pace" class="form-label">Pace:</label>
+          <input type="number" id="edit-pace" class="form-control"/>
+        </div>
+        <div class="mb-3">
+          <label for="Shooting" class="form-label">Shooting:</label>
+          <input type="number" id="edit-shooting" class="form-control"/>
+        </div>
+        <div class="mb-3">
+          <label for="Passing" class="form-label">Passing:</label>
+          <input type="number" id="edit-passing" class="form-control"/>
+        </div>
+        <div class="mb-3">
+          <label for="Dribbling" class="form-label">Dribbling:</label>
+          <input type="number" id="edit-dribbling" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label for="defending" class="form-label">Defending:</label>
+          <input type="number" id="edit-defending" class="form-control" autocomplete="off"/>
+        </div>
+        <div class="mb-3">
+          <label for="physical" class="form-label">Physical:</label>
+          <input type="number" id="edit-physical" class="form-control" autocomplete="off"/>
+        </div>
+        <div class="mb-3">
+          <label>Photo</label>
+          <input type="file" id="edit-photo" class="form-control">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+        <button type="button" class="btn btn-primary" onclick="updatePlayer()">Sauvegarder</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- eend modal for editi player -->
+
+
 
 
     
 
 
     <script src="Assets/js/app.js"></script>
+
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
       integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
