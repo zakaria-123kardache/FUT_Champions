@@ -15,14 +15,15 @@ function f() {
         playerCard.classList.add('d-flex', 'item2');
 
         playerCard.innerHTML =
-          ` <div class="d-flex item2" dragable="true"><div class="card-info2">
+          ` 
+          <div class="card-info2">
       <p class="position">${player.position}</p>
       <p class="rating">${player.rating}</p>
       <img src="${player.flag}" alt="flag" class="flag" />
       </div>
       <div class="card-image2">
       <img src="${player.photo}" alt="" />
-      </div></div></div>`
+      </div></div>`
           ;
 
         playercard.appendChild(playerCard);
@@ -113,8 +114,18 @@ function dragItem() {
 
   });
   });
-
 };
+
+function showmessag(message) {
+  const messag = document.getElementById('messag');
+  messag.textContent = message;
+  messag.classList.remove('hidden');
+  
+  
+  setTimeout(() => {
+    messag.classList.add('hidden');
+  }, 3000);
+}
  
 
 // function validateFormation() {
@@ -143,16 +154,7 @@ function dragItem() {
 
 // form reset
 
-function showmessag(message) {
-  const messag = document.getElementById('messag');
-  messag.textContent = message;
-  messag.classList.remove('hidden');
-  
-  
-  setTimeout(() => {
-    messag.classList.add('hidden');
-  }, 3000);
-}
+
 
 
 
@@ -170,9 +172,7 @@ closebtn.addEventListener('click', () => {
 });
 
 
-let errorel = document.getElementById('error');
 function addPlayer() {
-  const form = document.getElementById('form');
   const position = document.getElementById('position').value;
   const Name = document.getElementById('Name').value;
   const nationality = document.getElementById('nationality').value;
@@ -188,108 +188,7 @@ function addPlayer() {
   const defending = document.getElementById('defending').value;
   const physical = document.getElementById('physical').value;
 
- form.addEventListener('submit',function(e){
   
-  let error = [];
-
-
-if (Name.trim() === '') {
-  error.push(' entre name of player is important');
-}
-if (Name.length < 6) {
-  error.push('name est long');
-}
-if (Name.length > 20) {
-  error.push('Name est court');
-}
-
-
-if(club.trim() === '') {
-  error.push('Club name of player is important');
-}
-if(club.length < 6) {
-  error.push('Club name est long');
-}
-if(club.value.length > 20) {
-  error.push('Club name est court');
-}
-
-if (physical.trim() === '' || physical == null){
-  error.push('Pyhysical is important Write a Physicql nu;ber ')
-}
-if(physical<= 1 || physical > 100){
-  error.push('error just enter biywen a 1 to 100 ')
-}
-
-if(defending.trim() === '' || defending == null){
-  error.push('defending is important Write a defending nu;ber ')
-}
-if(defending <= 1 && defending > 100){
-  error.push('error defending just enter biywen a 1 to 100 ')
-}
-
-if(dribbling.trim() === '' || dribbling == null){
-  error.push('dribbling is important Write a dribbling nu;ber ')
-}
-if(dribbling <= 1 && dribbling > 100){
-  error.push('error dribbling just enter biywen a 1 to 100 ')
-}
-
-if(passing.trim() === '' || passing == null){
-  error.push('passing is important Write a passing nu;ber ')
-}
-if(passing <= 1 && passing > 100){
-  error.push('error passing just enter biywen a 1 to 100 ')
-}
-
-if(shooting.trim() === '' || shooting == null){
-  error.push('shooting is important Write a shooting nu;ber ')
-}
-if(shooting <= 1 && shooting > 100){
-  error.push('error shooting just enter biywen a 1 to 100 ')
-}
-
-if(pace.trim() === '' || pace == null){
-  error.push('pace is important Write a pace nu;ber ')
-}
-if(pace <= 1 && pace > 100){
-  error.push('error pace just enter biywen a 1 to 100 ')
-}
-
-if(shooting.trim() === '' || shooting == null){
-  error.push('shooting is important Write a pace nu;ber ')
-}
-if(shooting <= 1 && shooting > 100){
-  error.push('error shooting just enter biywen a 1 to 100 ')
-}
-
-
-
-      function validurl(url) {
-        return url && 
-               url.startsWith('https://') && 
-               url.endsWith('.png');
-      }
-      
-      if (!validurl(nationality.value)) {
-        error.push('Nationality URL is important');
-      }
-      
-      if (!validurl(flag.value)) {
-        error.push('Flag URL is important');
-      }
-      
-      if (!validurl(logo.value)) {
-        error.push('Logo URL is important');
-      }
-
-
-  if(error.length > 0){
-    e.preventDefault();
-    errorel.innerHTML= error.join('<br>');
-  }else 
- 
-
   if (!position || !Name || !nationality || !photo || !flag || !rating || !logo || !club || !pace || !shooting || !passing || !dribbling || !defending || !physical) {
     alert("Please fill in all fields.");
     return;
@@ -301,15 +200,21 @@ if(shooting <= 1 && shooting > 100){
     reader.onload = function (e) {
       imageSrc = e.target.result;
       addCard(position, physical, defending, dribbling, passing, shooting, club, pace, logo, flag, nationality, Name, imageSrc);
-      closeModal();
+      closeModal();  
     };
     reader.readAsDataURL(photo);
   } else {
     addCard(position, physical, defending, dribbling, passing, shooting, club, pace, logo, flag, nationality, Name, imageSrc);
-    closeModal();
   }
+    closeModal();  
+  }
+
+
+function closeModal() {
+  var modalElement = document.getElementById('addPlayerModal');
+  var modal = bootstrap.Modal.getInstance(modalElement); 
+  modal.hide(); 
 }
-)};
 
 
 
@@ -323,16 +228,23 @@ function closeModal() {
 
 function addCard(position, physical, defending, dribbling, passing, shooting, club, pace, logo, flag, nationality, Name, imageSrc) {
   const container = document.getElementById('playercard-fitsch');
-  const card =  ` <div class="d-flex item2" dragable="true"><div class="card-info2">
-  <p class="position">${position}</p>
-  <p class="rating">${shooting}</p>
-  <img src="${flag}" alt="flag" class="flag" />
-  </div>
-  <div class="card-image2">
-  <img src="${imageSrc}" alt="" />
-  </div></div></div>`;
+  const card = document.createElement('div');
+  card.classList.add('d-flex', 'item2');
+  card.setAttribute('draggable', 'true');
 
-  container.innerHTML += card;
+  card.innerHTML = `
+    <div class="card-info2">
+      <p class="position">${position}</p>
+      <p class="rating">${shooting}</p>
+      <img src="${flag}" alt="flag" class="flag" />
+    </div>
+    <div class="card-image2">
+      <img src="${imageSrc}" alt="${Name}" />
+    </div>
+  `;
+   
+  container.appendChild(card);
+  dragItem();
 }
 
 
