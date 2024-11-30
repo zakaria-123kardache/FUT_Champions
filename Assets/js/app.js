@@ -4,7 +4,6 @@ function f() {
   fetch('player.json')
     .then(res => res.json())
     .then(data => {
-
       data.players.forEach((player, index) => {
         if (!player.id) {
           player.id = index + 1;  
@@ -14,36 +13,39 @@ function f() {
       const playercard = document.getElementById('playercard-fitsch');
       playercard.innerHTML = '';
 
-
-      data.players.forEach(player => {
+      data.players.forEach((player, index) => {
         const playerCard = document.createElement('div');
         playerCard.setAttribute('draggable', 'true');
         playerCard.classList.add('d-flex', 'item2');
+        playerCard.setAttribute('data-player-id', player.id);
 
-        playerCard.innerHTML =
-          ` <div class="card-info2"> 
-
-          <p class="position">${player.position}</p>
-      <p class="rating">${player.rating}</p>
-      <img src="${player.flag}" alt="flag" class="flag" />
-
-      </div>
-
-      <div class="card-image2">
-      <img src="${player.photo}" alt="" />
-      </div>
-
-      </div>`
-          ;
+        playerCard.innerHTML = `
+          <div class="card-info2">
+            <p class="position">${player.position}</p>
+            <p class="rating">${player.rating}</p>
+           
+            <img src="${player.flag}" alt="flag" class="flag" />
+            
+            </div>
+          <div class="card-image2">
+            <img src="${player.photo}" alt="" />
+          </div>
+          <button class="btn btn-warning edit-btn" 
+              onclick="openEditModal('${player.id}')" 
+              data-bs-toggle="modal" 
+              data-bs-target="#Editplayer">
+              Edit
+            </button>
+             <button class="btn btn-danger delete-player" onclick="deletePlayer(${player.id})">delet</button>
+        `;
 
         playercard.appendChild(playerCard);
       });
+      
       dragItem();
     })
     .catch(error => console.error('Error fetching data:', error));
-
 }
-
 let drag = null;
 // let divs = Document.querySelectorAll('.parent1.div1 .parent1.div2 .parent1.div3 .parent1.div4 .parent1.div5 .parent1.div6 .parent1.div7 .parent1.div 8 .parent1.div9 .parent1.div10 .parent1.div10');
 let divs = document.querySelectorAll('.parent1 > div');
@@ -272,7 +274,7 @@ function openEditModal(playerId) {
     const dribbling = playerCard.querySelector('.dribbling') ? playerCard.querySelector('.dribbling').textContent : '';
     const defending = playerCard.querySelector('.defending') ? playerCard.querySelector('.defending').textContent : '';
     const physical = playerCard.querySelector('.physical') ? playerCard.querySelector('.physical').textContent : '';
-    
+
     document.getElementById('edit-player-id').value = playerId;
     document.getElementById('edit-position').value = position;
     document.getElementById('edit-name').value = name;
@@ -368,50 +370,19 @@ function updatePlayer() {
   }
 }
 
-function f() {
-  fetch('player.json')
-    .then(res => res.json())
-    .then(data => {
-      data.players.forEach((player, index) => {
-        if (!player.id) {
-          player.id = index + 1;  
-        }
-      });
-
-      const playercard = document.getElementById('playercard-fitsch');
-      playercard.innerHTML = '';
-
-      data.players.forEach((player, index) => {
-        const playerCard = document.createElement('div');
-        playerCard.setAttribute('draggable', 'true');
-        playerCard.classList.add('d-flex', 'item2');
-        playerCard.setAttribute('data-player-id', player.id);
-
-        playerCard.innerHTML = `
-          <div class="card-info2">
-            <p class="position">${player.position}</p>
-            <p class="rating">${player.rating}</p>
-           
-            <img src="${player.flag}" alt="flag" class="flag" />
-            
-            </div>
-          <div class="card-image2">
-            <img src="${player.photo}" alt="" />
-          </div>
-          <button class="btn btn-warning edit-btn" 
-              onclick="openEditModal('${player.id}')" 
-              data-bs-toggle="modal" 
-              data-bs-target="#Editplayer">
-              Edit
-            </button>
-        `;
-
-        playercard.appendChild(playerCard);
-      });
-      
-      dragItem();
-    })
-    .catch(error => console.error('Error fetching data:', error));
+// delete player json
+function deletPlayer(playerId) {
+  
+  const confirm = confirm('confirm ');
+  
+  if (confirm) {
+    const playerCard = document.querySelector(`.item2[data-player-id="${playerId}"]`);
+    
+    if (playerCard) {
+      playerCard.remove();
+      alert('delet Est acccept');
+    }
+  }
 }
 
 
