@@ -1,9 +1,10 @@
 
-
+let fetchedData;
 function f() {
   fetch('player.json')
     .then(res => res.json())
     .then(data => {
+      fetchedData = data; 
       data.players.forEach((player, index) => {
         if (!player.id) {
           player.id = index + 1;  
@@ -37,6 +38,9 @@ function f() {
               Edit
             </button>
              <button class="btn btn-danger delete-player" onclick="deletPlayer(${player.id})">delet</button>
+              <button class="btn btn-primary show-details" onclick="showPlayerDetails(${player.id})">
+            Show Details
+          </button>
         `;
 
         playercard.appendChild(playerCard);
@@ -46,6 +50,7 @@ function f() {
     })
     .catch(error => console.error('Error fetching data:', error));
 }
+
 let drag = null;
 // let divs = Document.querySelectorAll('.parent1.div1 .parent1.div2 .parent1.div3 .parent1.div4 .parent1.div5 .parent1.div6 .parent1.div7 .parent1.div 8 .parent1.div9 .parent1.div10 .parent1.div10');
 let divs = document.querySelectorAll('.parent1 > div');
@@ -187,7 +192,7 @@ closebtn.addEventListener('click', () => {
 let currentPlayerId = 33;
 
 function addPlayer() {
-  console.log("Adding player...");
+  // console.log("Adding player...");
   const position = document.getElementById('position').value;
   const Name = document.getElementById('Name').value;
   const nationality = document.getElementById('nationality').value;
@@ -519,6 +524,76 @@ function savePlayerEdits() {
   const editModal = bootstrap.Modal.getInstance(document.getElementById('edit-player-modal'));
   if (editModal) {
     editModal.hide();
+  }
+}
+
+
+// afficher le deati de player
+
+function showPlayerDetails(playerId) {
+  if (!fetchedData) {
+    // console.error('gfcghbjbj,nbhvhjvhj');
+    return;
+  }
+  
+  const player = fetchedData.players.find(p => p.id == playerId);
+  
+  if (player) {
+    const detailsCard = document.querySelector('.card-affichage');
+    detailsCard.innerHTML = `
+      <div class="left-card">
+       <div>
+        <p> ${player.rating}</p>
+        <img class="logo-player" src="${player.logo}" alt="logo">
+        <img class="flag-player" src="${player.flag}" alt="flag">
+        </div>
+        <div class="fa">
+        </div>
+      <div class="right-right">
+       <div class="imageplayercard">
+            <img src="${player.photo}" alt="imgplayer">
+           </div> 
+            <div class="nameplayercard">
+            <p>${player.name}</p>
+           </div>
+           <div class="informationplayer">
+
+            <div class="left-info">
+                <div>
+                 <p>${player.pace}</p>
+            <p>${player.shooting}</p>
+            <p>${player.passing}</p>
+            </div>
+            
+            
+            <div>
+                 <p>Pas</p>
+                <p>Sho</p>
+                <p>Pas</p>
+            </div>
+
+            </div>
+             <div class="right-info">
+              <div>
+                <p>${player.dribbling}</p>
+           <p>${player.defending}</p>
+           <p>${player.physical}</p>
+           </div>
+            <div>
+                <p>dri</p>
+               <p>def</p>
+               <p>phy</p>
+           </div>
+
+           </div>
+
+        
+        
+      </div>
+    `;
+    detailsCard.style.display = 'block';  
+  } else {
+    // console.error('hahaha', playerId);
   }
 }
 
