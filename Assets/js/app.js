@@ -184,8 +184,10 @@ closebtn.addEventListener('click', () => {
 });
 
 
-let playerCounter = 33;
+let currentPlayerId = 33;
+
 function addPlayer() {
+  console.log("Adding player...");
   const position = document.getElementById('position').value;
   const Name = document.getElementById('Name').value;
   const nationality = document.getElementById('nationality').value;
@@ -201,8 +203,13 @@ function addPlayer() {
   const defending = document.getElementById('defending').value;
   const physical = document.getElementById('physical').value;
 
+  console.log("Form values:", {
+    position, Name, nationality, photo, flag, club, logo, 
+    rating, pace, shooting, passing, dribbling, defending, physical
+  });
   
   if (!position || !Name || !nationality || !photo || !flag || !rating || !logo || !club || !pace || !shooting || !passing || !dribbling || !defending || !physical) {
+    console.error("Missing fields");
     alert("Please fill in all fields.");
     return;
   }
@@ -212,19 +219,19 @@ function addPlayer() {
     const reader = new FileReader();
     reader.onload = function (e) {
       imageSrc = e.target.result;
-      
-      addCard(position, physical, defending, dribbling, passing, shooting, club, pace, logo, flag, nationality, Name, imageSrc, playerCounter);
-      playerCounter++; 
+      console.log("Image source:", imageSrc);
+    
+      addCard(position, physical, defending, dribbling, passing, shooting, club, pace, logo, flag, nationality, Name, imageSrc, currentPlayerId);
+      currentPlayerId++; 
       closeModal();  
     };
     reader.readAsDataURL(photo);
   } else {
-    addCard(position, physical, defending, dribbling, passing, shooting, club, pace, logo, flag, nationality, Name, imageSrc, playerCounter);
-    playerCounter++; 
+    addCard(position, physical, defending, dribbling, passing, shooting, club, pace, logo, flag, nationality, Name, imageSrc, currentPlayerId);
+    currentPlayerId++; 
     closeModal();  
   }
 }
-
 
 function closeModal() {
   var modalElement = document.getElementById('addPlayerModal');
@@ -235,11 +242,17 @@ function closeModal() {
 
 
 
-function addCard(position, physical, defending, dribbling, passing, shooting, club, pace, logo, flag, nationality, Name, imageSrc) {
-  const container = document.getElementById('playercard-fitsch');
+
+function addCard(position, physical, defending, dribbling, passing, shooting, club, pace, logo, flag, nationality, Name, imageSrc, playerId) {
+ const container = document.getElementById('playercard-fitsch');
+  if (!container) {
+    console.error("Container 'playercard-fitsch' not found!");
+    return;
+  }
+
   const card = document.createElement('div');
   card.classList.add('d-flex', 'item2');
-  card.setAttribute('data-player-id', currentPlayerId); 
+  card.setAttribute('data-player-id', playerId);
   card.setAttribute('draggable', 'true');
 
   card.innerHTML = `
@@ -247,20 +260,36 @@ function addCard(position, physical, defending, dribbling, passing, shooting, cl
       <p class="position">${position}</p>
       <p class="rating">${shooting}</p>
       <img src="${flag}" alt="flag" class="flag" />
+      <p class="player-name"style="display:none;">${Name}</p>
+      <p class="club-name" style="display:none;">${club}</p>
+      <p class="pace" style="display:none;">${pace}</p>
+      <p class="shooting" style="display:none;">${shooting}</p>
+      <p class="passing" style="display:none;">${passing}</p>
+      <p class="dribbling" style="display:none;">${dribbling}</p>
+      <p class="defending" style="display:none;">${defending}</p>
+      <p class="physical" style="display:none;">${physical}</p>
+      <img src="${logo}" alt="club logo" class="club-logo" style="display:none;" />
+      <img src="${imageSrc}" alt="player" class="player-photo" style="display:none;" />
     </div>
     <div class="card-image2">
-      <img src="${imageSrc}" alt="" />
+      <img src="${imageSrc}" alt="${Name}" />
     </div>
-     <button class="btn btn-warning edit-btn" onclick="openEditPlayerModal(${playerCounter})">
+    <button class="btn btn-warning edit-btn" onclick="openEditPlayerModal(${playerId})">
       Edit
     </button>
-    
   `;
-   
+
   container.appendChild(card);
   dragItem();
 }
 
+function closeModal() {
+  var modalElement = document.getElementById('exampleModal'); 
+  var modal = bootstrap.Modal.getInstance(modalElement); 
+  if (modal) {
+    modal.hide();
+  }
+}
 
 // 
 
@@ -396,12 +425,8 @@ function deletPlayer(playerId) {
 
 // Editing Creating Playr Information 
 function openEditPlayerModal(playerId) {
-  console.log("Opening modal for player ID:", playerId);
-  
-  // Log all player cards to verify data attributes
-  const allCards = document.querySelectorAll('.item2');
-  console.log("All player cards:", Array.from(allCards).map(card => card.getAttribute('data-player-id')));
 
+  const allCards = document.querySelectorAll('.item2');
   const playerCard = document.querySelector(`.item2[data-player-id="${playerId}"]`);
   
   if (!playerCard) {
@@ -439,43 +464,59 @@ function openEditPlayerModal(playerId) {
   document.getElementById('edit-player-modal').setAttribute('data-current-player-id', playerId);
 
   
-  const editModal = new bootstrap.Modal(document.getElementById('edit-player-modal'));
+  const editModal = new bootstrap.Modal(document.getElementById('edit-player-modal'), {
+    keyboard: true,  
+    focus: true      
+  });
   editModal.show();
 }
 
 function savePlayerEdits() {
-  
   const playerId = document.getElementById('edit-player-modal')
     .getAttribute('data-current-player-id');
 
   const playerCard = document.querySelector(`.item2[data-player-id="${playerId}"]`);
 
-  const updateText = (selector, value) => {
-    const element = playerCard.querySelector(selector);
-    if (element) element.textContent = value;
-  };
+  if (!playerCard) {
+    console.error("Player card not found");
+    return;
+  }
 
-  const updateSrc = (selector, value) => {
-    const element = playerCard.querySelector(selector);
-    if (element) element.src = value;
-  };
+  const position = document.getElementById('CRedit-position').value;
+  const rating = document.getElementById('CRedit-rating').value;
+  const name = document.getElementById('CRedit-name').value;
+  const club = document.getElementById('CRedit-club').value;
+  const pace = document.getElementById('CRedit-pace').value;
+  const shooting = document.getElementById('CRedit-shooting').value;
+  const passing = document.getElementById('CRedit-passing').value;
+  const dribbling = document.getElementById('CRedit-dribbling').value;
+  const defending = document.getElementById('CRedit-defending').value;
+  const physical = document.getElementById('CRedit-physical').value;
+  const flag = document.getElementById('CRedit-flag').value;
+  const logo = document.getElementById('CRedit-logo').value;
 
-  updateText('.position', document.getElementById('CRedit-position').value);
-  updateText('.rating', document.getElementById('CRedit-rating').value);
-  updateText('.player-name', document.getElementById('CRedit-name').value);
-  updateText('.club-name', document.getElementById('CRedit-club').value);
-  updateText('.pace', document.getElementById('CRedit-pace').value);
-  updateText('.shooting', document.getElementById('CRedit-shooting').value);
-  updateText('.passing', document.getElementById('CRedit-passing').value);
-  updateText('.dribbling', document.getElementById('CRedit-dribbling').value);
-  updateText('.defending', document.getElementById('CRedit-defending').value);
-  updateText('.physical', document.getElementById('CRedit-physical').value);
+  playerCard.querySelector('.position').textContent = position;
+  playerCard.querySelector('.rating').textContent = rating;
+  playerCard.querySelector('.player-name').textContent = name;
+  playerCard.querySelector('.club-name').textContent = club;
+  playerCard.querySelector('.pace').textContent = pace;
+  playerCard.querySelector('.shooting').textContent = shooting;
+  playerCard.querySelector('.passing').textContent = passing;
+  playerCard.querySelector('.dribbling').textContent = dribbling;
+  playerCard.querySelector('.defending').textContent = defending;
+  playerCard.querySelector('.physical').textContent = physical;
   
-  updateSrc('.flag', document.getElementById('CRedit-flag').value);
-  updateSrc('.club-logo', document.getElementById('CRedit-logo').value);
+
+  const flagElement = playerCard.querySelector('.flag');
+  if (flagElement) flagElement.src = flag;
+
+  const logoElement = playerCard.querySelector('.club-logo');
+  if (logoElement) logoElement.src = logo;
 
   const editModal = bootstrap.Modal.getInstance(document.getElementById('edit-player-modal'));
-  editModal.hide();
+  if (editModal) {
+    editModal.hide();
+  }
 }
 
 
