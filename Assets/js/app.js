@@ -301,13 +301,34 @@ function addCard(position, physical, defending, dribbling, passing, shooting, cl
     <div class="card-image2">
       <img src="${imageSrc}" alt="${Name}" />
     </div>
-    <button class="btn btn-warning edit-btn" onclick="openEditPlayerModal(${playerId})">
-      Edit
+    <div class="flex flex-column items-center">
+  <i class="fas fa-ellipsis-v cursor-pointer flex-column text-gray-600 text-xl option"></i>
+  <div class="flex flex-column hidden actionButton">
+
+  <button class="btn" onclick="openEditPlayerModal(${playerId})">
+    
+      <i class="fas fa-edit mr-2"></i>
+     
     </button>
-     <button class="btn btn-danger delete-btn" onclick="deletPlayer(${playerId})">
-      Delete
+    <button class="btn  delete-btn" onclick="deletPlayer(${playerId})">
+      
+   
+      <i class="fas fa-trash-alt mr-2"></i>
+     
     </button>
+    
+  </div>
+</div>
   `;
+  const options = document.querySelectorAll('.option');
+  const actionButtons = document.querySelectorAll('.actionButton');
+
+  options.forEach((option, index) => {
+    option.addEventListener('click', () => {
+      actionButtons[index].classList.toggle('hidden');
+    });
+  });
+
 
   container.appendChild(card);
   dragItem();
