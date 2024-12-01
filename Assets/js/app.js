@@ -184,6 +184,7 @@ closebtn.addEventListener('click', () => {
 });
 
 
+let playerCounter = 33;
 function addPlayer() {
   const position = document.getElementById('position').value;
   const Name = document.getElementById('Name').value;
@@ -211,15 +212,18 @@ function addPlayer() {
     const reader = new FileReader();
     reader.onload = function (e) {
       imageSrc = e.target.result;
-      addCard(position, physical, defending, dribbling, passing, shooting, club, pace, logo, flag, nationality, Name, imageSrc);
+      
+      addCard(position, physical, defending, dribbling, passing, shooting, club, pace, logo, flag, nationality, Name, imageSrc, playerCounter);
+      playerCounter++; 
       closeModal();  
     };
     reader.readAsDataURL(photo);
   } else {
-    addCard(position, physical, defending, dribbling, passing, shooting, club, pace, logo, flag, nationality, Name, imageSrc);
-  }
+    addCard(position, physical, defending, dribbling, passing, shooting, club, pace, logo, flag, nationality, Name, imageSrc, playerCounter);
+    playerCounter++; 
     closeModal();  
   }
+}
 
 
 function closeModal() {
@@ -235,6 +239,7 @@ function addCard(position, physical, defending, dribbling, passing, shooting, cl
   const container = document.getElementById('playercard-fitsch');
   const card = document.createElement('div');
   card.classList.add('d-flex', 'item2');
+  card.setAttribute('data-player-id', currentPlayerId); 
   card.setAttribute('draggable', 'true');
 
   card.innerHTML = `
@@ -246,6 +251,9 @@ function addCard(position, physical, defending, dribbling, passing, shooting, cl
     <div class="card-image2">
       <img src="${imageSrc}" alt="" />
     </div>
+     <button class="btn btn-warning edit-btn" onclick="openEditPlayerModal(${playerCounter})">
+      Edit
+    </button>
     
   `;
    
@@ -384,6 +392,90 @@ function deletPlayer(playerId) {
       alert('delet Est acccept');
     }
   }
+}
+
+// Editing Creating Playr Information 
+function openEditPlayerModal(playerId) {
+  console.log("Opening modal for player ID:", playerId);
+  
+  // Log all player cards to verify data attributes
+  const allCards = document.querySelectorAll('.item2');
+  console.log("All player cards:", Array.from(allCards).map(card => card.getAttribute('data-player-id')));
+
+  const playerCard = document.querySelector(`.item2[data-player-id="${playerId}"]`);
+  
+  if (!playerCard) {
+    console.error("Player card not found for ID:", playerId);
+    return;
+  }
+
+  const position = playerCard.querySelector('.position').textContent;
+  const rating = playerCard.querySelector('.rating').textContent;
+  const name = playerCard.querySelector('.player-name').textContent;
+  const club = playerCard.querySelector('.club-name').textContent;
+  const pace = playerCard.querySelector('.pace').textContent;
+  const shooting = playerCard.querySelector('.shooting').textContent;
+  const passing = playerCard.querySelector('.passing').textContent;
+  const dribbling = playerCard.querySelector('.dribbling').textContent;
+  const defending = playerCard.querySelector('.defending').textContent;
+  const physical = playerCard.querySelector('.physical').textContent;
+  const flag = playerCard.querySelector('.flag').src;
+  const logo = playerCard.querySelector('.club-logo').src;
+  const photo = playerCard.querySelector('.player-photo').src;
+
+  document.getElementById('CRedit-position').value = position;
+  document.getElementById('CRedit-rating').value = rating;
+  document.getElementById('CRedit-name').value = name;
+  document.getElementById('CRedit-club').value = club;
+  document.getElementById('CRedit-pace').value = pace;
+  document.getElementById('CRedit-shooting').value = shooting;
+  document.getElementById('CRedit-passing').value = passing;
+  document.getElementById('CRedit-dribbling').value = dribbling;
+  document.getElementById('CRedit-defending').value = defending;
+  document.getElementById('CRedit-physical').value = physical;
+  document.getElementById('CRedit-flag').value = flag;
+  document.getElementById('CRedit-logo').value = logo;
+
+  document.getElementById('edit-player-modal').setAttribute('data-current-player-id', playerId);
+
+  
+  const editModal = new bootstrap.Modal(document.getElementById('edit-player-modal'));
+  editModal.show();
+}
+
+function savePlayerEdits() {
+  
+  const playerId = document.getElementById('edit-player-modal')
+    .getAttribute('data-current-player-id');
+
+  const playerCard = document.querySelector(`.item2[data-player-id="${playerId}"]`);
+
+  const updateText = (selector, value) => {
+    const element = playerCard.querySelector(selector);
+    if (element) element.textContent = value;
+  };
+
+  const updateSrc = (selector, value) => {
+    const element = playerCard.querySelector(selector);
+    if (element) element.src = value;
+  };
+
+  updateText('.position', document.getElementById('CRedit-position').value);
+  updateText('.rating', document.getElementById('CRedit-rating').value);
+  updateText('.player-name', document.getElementById('CRedit-name').value);
+  updateText('.club-name', document.getElementById('CRedit-club').value);
+  updateText('.pace', document.getElementById('CRedit-pace').value);
+  updateText('.shooting', document.getElementById('CRedit-shooting').value);
+  updateText('.passing', document.getElementById('CRedit-passing').value);
+  updateText('.dribbling', document.getElementById('CRedit-dribbling').value);
+  updateText('.defending', document.getElementById('CRedit-defending').value);
+  updateText('.physical', document.getElementById('CRedit-physical').value);
+  
+  updateSrc('.flag', document.getElementById('CRedit-flag').value);
+  updateSrc('.club-logo', document.getElementById('CRedit-logo').value);
+
+  const editModal = bootstrap.Modal.getInstance(document.getElementById('edit-player-modal'));
+  editModal.hide();
 }
 
 
