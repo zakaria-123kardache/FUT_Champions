@@ -277,6 +277,9 @@ function addCard(position, physical, defending, dribbling, passing, shooting, cl
     <button class="btn btn-warning edit-btn" onclick="openEditPlayerModal(${playerId})">
       Edit
     </button>
+     <button class="btn btn-danger delete-btn" onclick="deletPlayer(${playerId})">
+      Delete
+    </button>
   `;
 
   container.appendChild(card);
