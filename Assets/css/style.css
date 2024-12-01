@@ -79,8 +79,8 @@
 
 .d-flex {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  cursor: move;
+  grid-template-columns: repeat(3, 1fr);
+  /* cursor: move; */
   background-color: red; 
   border-radius: 12px;
   padding: 5px;
@@ -395,4 +395,8 @@
   font-weight: bold;
   margin: 0;
   padding: 0px 0px 0px -19px;
+}
+
+.hidden {
+  display: none;
 }

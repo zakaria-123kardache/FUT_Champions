@@ -4,10 +4,10 @@ function f() {
   fetch('player.json')
     .then(res => res.json())
     .then(data => {
-      fetchedData = data; 
+      fetchedData = data;
       data.players.forEach((player, index) => {
         if (!player.id) {
-          player.id = index + 1;  
+          player.id = index + 1;
         }
       });
 
@@ -24,32 +24,54 @@ function f() {
           <div class="card-info2">
             <p class="position">${player.position}</p>
             <p class="rating">${player.rating}</p>
-           
             <img src="${player.flag}" alt="flag" class="flag" />
-            
-            </div>
+          </div>
           <div class="card-image2">
             <img src="${player.photo}" alt="" />
           </div>
-          <button class="btn btn-warning edit-btn" 
-              onclick="openEditModal('${player.id}')" 
-              data-bs-toggle="modal" 
-              data-bs-target="#Editplayer">
-              Edit
-            </button>
-             <button class="btn btn-danger delete-player" onclick="deletPlayer(${player.id})">delet</button>
-              <button class="btn btn-primary show-details" onclick="showPlayerDetails(${player.id})">
-            Show Details
-          </button>
+         <div class="flex flex-column items-center">
+  <i class="fas fa-ellipsis-v cursor-pointer flex-column text-gray-600 text-xl option"></i>
+  <div class="flex flex-column hidden actionButton">
+
+    <button class="flex items-center " 
+            onclick="openEditModal('${player.id}')" 
+            data-bs-toggle="modal" 
+            data-bs-target="#Editplayer">
+      <i class="fas fa-edit mr-2"></i>
+     
+    </button>
+    <button class="flex items-center bg-hidden" 
+            onclick="deletPlayer(${player.id})">
+      <i class="fas fa-trash-alt mr-2"></i>
+     
+    </button>
+    <button class="flex items-center " 
+            onclick="showPlayerDetails(${player.id})">
+      <i class="fas fa-info-circle mr-2"></i>
+      
+    </button>
+  </div>
+</div>
         `;
 
         playercard.appendChild(playerCard);
       });
-      
+
+      const options = document.querySelectorAll('.option');
+      const actionButtons = document.querySelectorAll('.actionButton');
+
+      options.forEach((option, index) => {
+        option.addEventListener('click', () => {
+          actionButtons[index].classList.toggle('hidden');
+        });
+      });
+
       dragItem();
     })
     .catch(error => console.error('Error fetching data:', error));
 }
+
+
 
 let drag = null;
 // let divs = Document.querySelectorAll('.parent1.div1 .parent1.div2 .parent1.div3 .parent1.div4 .parent1.div5 .parent1.div6 .parent1.div7 .parent1.div 8 .parent1.div9 .parent1.div10 .parent1.div10');
@@ -99,37 +121,37 @@ function dragItem() {
 
         const messag = document.getElementById('messag');
 
-        
+
 
         if (playerPosition === divPosition) {
 
           messag.textContent = '';
           messag.classList.add('hidden');
 
-        if (!this.hasChildNodes()) {
-          
-          this.appendChild(drag);
-        }else {
-      const playerstaduim = this.firstChild;
-      const switsch = drag.parentNode;
-     
-      this.replaceChild(drag, playerstaduim);
-      switsch.appendChild(playerstaduim);
-    }
-  } else {
-    
-    messag.textContent = `can't remplaces das ${playerPosition} here`;
-    messag.classList.remove('hidden');
-     
-  }
-  setTimeout(() => {
-    messag.classList.add('hidden');
-  }, 3000);
+          if (!this.hasChildNodes()) {
 
+            this.appendChild(drag);
+          } else {
+            const playerstaduim = this.firstChild;
+            const switsch = drag.parentNode;
+
+            this.replaceChild(drag, playerstaduim);
+            switsch.appendChild(playerstaduim);
+          }
+        } else {
+
+          messag.textContent = `can't remplaces das ${playerPosition} here`;
+          messag.classList.remove('hidden');
+
+        }
+        setTimeout(() => {
+          messag.classList.add('hidden');
+        }, 3000);
+
+
+      });
 
     });
-
-  });
   });
 };
 
@@ -137,13 +159,13 @@ function showmessag(message) {
   const messag = document.getElementById('messag');
   messag.textContent = message;
   messag.classList.remove('hidden');
-  
-  
+
+
   setTimeout(() => {
     messag.classList.add('hidden');
   }, 3000);
 }
- 
+
 
 // function validateFormation() {
 //   let valid = true;
@@ -209,10 +231,10 @@ function addPlayer() {
   const physical = document.getElementById('physical').value;
 
   console.log("Form values:", {
-    position, Name, nationality, photo, flag, club, logo, 
+    position, Name, nationality, photo, flag, club, logo,
     rating, pace, shooting, passing, dribbling, defending, physical
   });
-  
+
   if (!position || !Name || !nationality || !photo || !flag || !rating || !logo || !club || !pace || !shooting || !passing || !dribbling || !defending || !physical) {
     console.error("Missing fields");
     alert("Please fill in all fields.");
@@ -225,23 +247,23 @@ function addPlayer() {
     reader.onload = function (e) {
       imageSrc = e.target.result;
       console.log("Image source:", imageSrc);
-    
+
       addCard(position, physical, defending, dribbling, passing, shooting, club, pace, logo, flag, nationality, Name, imageSrc, currentPlayerId);
-      currentPlayerId++; 
-      closeModal();  
+      currentPlayerId++;
+      closeModal();
     };
     reader.readAsDataURL(photo);
   } else {
     addCard(position, physical, defending, dribbling, passing, shooting, club, pace, logo, flag, nationality, Name, imageSrc, currentPlayerId);
-    currentPlayerId++; 
-    closeModal();  
+    currentPlayerId++;
+    closeModal();
   }
 }
 
 function closeModal() {
   var modalElement = document.getElementById('addPlayerModal');
-  var modal = bootstrap.Modal.getInstance(modalElement); 
-  modal.hide(); 
+  var modal = bootstrap.Modal.getInstance(modalElement);
+  modal.hide();
 }
 
 
@@ -249,7 +271,7 @@ function closeModal() {
 
 
 function addCard(position, physical, defending, dribbling, passing, shooting, club, pace, logo, flag, nationality, Name, imageSrc, playerId) {
- const container = document.getElementById('playercard-fitsch');
+  const container = document.getElementById('playercard-fitsch');
   if (!container) {
     console.error("Container 'playercard-fitsch' not found!");
     return;
@@ -292,8 +314,8 @@ function addCard(position, physical, defending, dribbling, passing, shooting, cl
 }
 
 function closeModal() {
-  var modalElement = document.getElementById('exampleModal'); 
-  var modal = bootstrap.Modal.getInstance(modalElement); 
+  var modalElement = document.getElementById('exampleModal');
+  var modal = bootstrap.Modal.getInstance(modalElement);
   if (modal) {
     modal.hide();
   }
@@ -305,8 +327,8 @@ function closeModal() {
 
 function openEditModal(playerId) {
   const playerCard = document.querySelector(`.item2[data-player-id="${playerId}"]`);
-  
-  if (playerCard) { 
+
+  if (playerCard) {
     const position = playerCard.querySelector('.position').textContent;
     const rating = playerCard.querySelector('.rating').textContent;
     const flagSrc = playerCard.querySelector('.flag').src;
@@ -324,7 +346,7 @@ function openEditModal(playerId) {
     document.getElementById('edit-player-id').value = playerId;
     document.getElementById('edit-position').value = position;
     document.getElementById('edit-name').value = name;
-    document.getElementById('edit-nationality').value = ''; 
+    document.getElementById('edit-nationality').value = '';
     document.getElementById('edit-flag').value = flagSrc;
     document.getElementById('edit-club').value = club;
     document.getElementById('edit-logo').value = logoSrc;
@@ -344,7 +366,7 @@ function updatePlayer() {
 
   const playerId = document.getElementById('Editplayer').getAttribute('data-current-player-id');
   const playerCard = document.querySelector(`.item2[data-player-id="${playerId}"]`);
-  
+
   if (playerCard) {
     const newPace = document.getElementById('edit-pace').value;
     const newShooting = document.getElementById('edit-shooting').value;
@@ -381,7 +403,7 @@ function updatePlayer() {
 
     if (newPhotoFile) {
       const reader = new FileReader();
-      reader.onload = function(e) {
+      reader.onload = function (e) {
         const photoEl = playerCard.querySelector('.card-image2 img');
         if (photoEl) photoEl.src = e.target.result;
       };
@@ -418,12 +440,12 @@ function updatePlayer() {
 
 // delete player json
 function deletPlayer(playerId) {
-  
+
   const confirme = confirm('confirm ');
-  
+
   if (confirme) {
     const playerCard = document.querySelector(`.item2[data-player-id="${playerId}"]`);
-    
+
     if (playerCard) {
       playerCard.remove();
       alert('delet Est acccept');
@@ -436,7 +458,7 @@ function openEditPlayerModal(playerId) {
 
   const allCards = document.querySelectorAll('.item2');
   const playerCard = document.querySelector(`.item2[data-player-id="${playerId}"]`);
-  
+
   if (!playerCard) {
     console.error("Player card not found for ID:", playerId);
     return;
@@ -471,10 +493,10 @@ function openEditPlayerModal(playerId) {
 
   document.getElementById('edit-player-modal').setAttribute('data-current-player-id', playerId);
 
-  
+
   const editModal = new bootstrap.Modal(document.getElementById('edit-player-modal'), {
-    keyboard: true,  
-    focus: true      
+    keyboard: true,
+    focus: true
   });
   editModal.show();
 }
@@ -513,7 +535,7 @@ function savePlayerEdits() {
   playerCard.querySelector('.dribbling').textContent = dribbling;
   playerCard.querySelector('.defending').textContent = defending;
   playerCard.querySelector('.physical').textContent = physical;
-  
+
 
   const flagElement = playerCard.querySelector('.flag');
   if (flagElement) flagElement.src = flag;
@@ -535,9 +557,9 @@ function showPlayerDetails(playerId) {
     // console.error('gfcghbjbj,nbhvhjvhj');
     return;
   }
-  
+
   const player = fetchedData.players.find(p => p.id == playerId);
-  
+
   if (player) {
     const detailsCard = document.querySelector('.card-affichage');
     detailsCard.innerHTML = `
@@ -556,7 +578,7 @@ function showPlayerDetails(playerId) {
             <div class="nameplayercard">
             <p>${player.name}</p>
            </div>
-           <div class="informationplayer">
+           < class="informationplayer">
 
             <div class="left-info">
                 <div>
@@ -586,16 +608,19 @@ function showPlayerDetails(playerId) {
            </div>
 
            </div>
+           
 
         
         
       </div>
     `;
-    detailsCard.style.display = 'block';  
+    detailsCard.style.display = 'block';
   } else {
     // console.error('hahaha', playerId);
   }
 }
+
+// 3 poin de buton
 
 
 
@@ -610,8 +635,8 @@ function showPlayerDetails(playerId) {
 
 {/* <button class="btn btn-warning edit-btn" onclick="openEditModal('${player.position}', '${player.rating}', '${player.flag}', '${player.photo}', '${player.Name}', '${player.physical}','${player.defending}','${player.dribbling}'
   ,'${player.passing}','${player.shooting}','${player.pace}','${player.logo}','${player.club}','${player.nationality}')">Edit</button>  */}
-  // playerCard.setAttribute('id', `player-${player.id}`); 
-  // <button class="btn btn-warning edit-btn" data-bs-toggle="modal" data-bs-target="#Editplayer" onclick="openEditModal('${player.id}', '${player.position}'
-  // , '${player.rating}', '${player.flag}', '${player.photo}', '${player.name}', '${player.physical}', '${player.defending}', '${player.dribbling}',
-  //  '${player.passing}', '${player.shooting}', '${player.pace}', '${player.logo}', '${player.club}', '${player.nationality}')">Edit</button>
+// playerCard.setAttribute('id', `player-${player.id}`);
+// <button class="btn btn-warning edit-btn" data-bs-toggle="modal" data-bs-target="#Editplayer" onclick="openEditModal('${player.id}', '${player.position}'
+// , '${player.rating}', '${player.flag}', '${player.photo}', '${player.name}', '${player.physical}', '${player.defending}', '${player.dribbling}',
+//  '${player.passing}', '${player.shooting}', '${player.pace}', '${player.logo}', '${player.club}', '${player.nationality}')">Edit</button>
 
