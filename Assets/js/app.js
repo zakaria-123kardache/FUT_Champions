@@ -30,7 +30,7 @@ function f() {
             <img src="${player.photo}" alt="" />
           </div>
          <div class="flex flex-column items-center">
-  <i class="fas fa-ellipsis-v cursor-pointer flex-column text-gray-600 text-xl option"></i>
+  <i class="fas fa-ellipsis-v cursor-pointer flex-column text-gray-600 text-l option"></i>
   <div class="flex flex-column hidden actionButton">
 
     <button class="flex items-center " 
@@ -74,7 +74,7 @@ function f() {
 
 
 let drag = null;
-// let divs = Document.querySelectorAll('.parent1.div1 .parent1.div2 .parent1.div3 .parent1.div4 .parent1.div5 .parent1.div6 .parent1.div7 .parent1.div 8 .parent1.div9 .parent1.div10 .parent1.div10');
+
 let divs = document.querySelectorAll('.parent1 > div');
 
 function dragItem() {
@@ -342,7 +342,7 @@ function closeModal() {
   }
 }
 
-// 
+
 
 // editng player
 
@@ -475,6 +475,7 @@ function deletPlayer(playerId) {
 }
 
 // Editing Creating Playr Information 
+
 function openEditPlayerModal(playerId) {
 
   const allCards = document.querySelectorAll('.item2');
@@ -584,80 +585,56 @@ function showPlayerDetails(playerId) {
   if (player) {
     const detailsCard = document.querySelector('.card-affichage');
     detailsCard.innerHTML = `
-      <div class="left-card">
-       <div>
-        <p> ${player.rating}</p>
+      <div class="card-affichage">
+    <div class="left-card">
+    <div>
+       <p>${player.rating}</p>
         <img class="logo-player" src="${player.logo}" alt="logo">
         <img class="flag-player" src="${player.flag}" alt="flag">
-        </div>
-        <div class="fa">
-        </div>
-      <div class="right-right">
-       <div class="imageplayercard">
+    </div>
+    <div class = "ffff">
+    </div>
+     
+    </div>
+    <div class="right-right">
+        <div class="imageplayercard">
             <img src="${player.photo}" alt="imgplayer">
-           </div> 
-            <div class="nameplayercard">
+        </div> 
+        <div class="nameplayercard">
             <p>${player.name}</p>
-           </div>
-           < class="informationplayer">
-
+        </div>
+        <div class="informationplayer">
             <div class="left-info">
-                <div>
-                 <p>${player.pace}</p>
-            <p>${player.shooting}</p>
-            <p>${player.passing}</p>
+                <div class="stat-value">
+                    <p>${player.pace}</p>
+                    <p>${player.shooting}</p>
+                    <p>${player.passing}</p>
+                </div>
+                <div class="stat-label">
+                    <p>Pac</p>
+                    <p>Sho</p>
+                    <p>Pas</p>
+                </div>
             </div>
-            
-            
-            <div>
-                 <p>Pas</p>
-                <p>Sho</p>
-                <p>Pas</p>
+            <div class="right-info">
+                <div class="stat-value">
+                    <p>${player.dribbling}</p>
+                    <p>${player.defending}</p>
+                    <p>${player.physical}</p>
+                </div>
+                <div class="stat-label">
+                    <p>Dri</p>
+                    <p>Def</p>
+                    <p>Phy</p>
+                </div>
             </div>
-
-            </div>
-             <div class="right-info">
-              <div>
-                <p>${player.dribbling}</p>
-           <p>${player.defending}</p>
-           <p>${player.physical}</p>
-           </div>
-            <div>
-                <p>dri</p>
-               <p>def</p>
-               <p>phy</p>
-           </div>
-
-           </div>
-           
-
-        
-        
-      </div>
+        </div>
+    </div>
+</div>
     `;
     detailsCard.style.display = 'block';
   } else {
     // console.error('hahaha', playerId);
   }
 }
-
-// 3 poin de buton
-
-
-
-
-
-// function showmodal(){
-//   console.log("jajfkajf")
-//   document.getElementById("modalsecond").style.display = "block"
-// }
-
-
-
-{/* <button class="btn btn-warning edit-btn" onclick="openEditModal('${player.position}', '${player.rating}', '${player.flag}', '${player.photo}', '${player.Name}', '${player.physical}','${player.defending}','${player.dribbling}'
-  ,'${player.passing}','${player.shooting}','${player.pace}','${player.logo}','${player.club}','${player.nationality}')">Edit</button>  */}
-// playerCard.setAttribute('id', `player-${player.id}`);
-// <button class="btn btn-warning edit-btn" data-bs-toggle="modal" data-bs-target="#Editplayer" onclick="openEditModal('${player.id}', '${player.position}'
-// , '${player.rating}', '${player.flag}', '${player.photo}', '${player.name}', '${player.physical}', '${player.defending}', '${player.dribbling}',
-//  '${player.passing}', '${player.shooting}', '${player.pace}', '${player.logo}', '${player.club}', '${player.nationality}')">Edit</button>
 

@@ -17,9 +17,9 @@
   </head>
 
   <body>
-    <div class="row">
-      <div class="col-md-2">
-        <div class="container">
+    <div class="row" >
+      <div class="col-md-2" >
+        <div class="container" style="background-image: url(/Assets/img/changement.jpg); background-repeat: no-repeat;background-size: cover;">
           <div class="item">
             <img
               src="https://bootdey.com/img/Content/avatar/avatar7.png"
@@ -33,9 +33,9 @@
 
          
 
-          <button id="openModal">
+          <button id="openModal" style="background-image: url(/Assets/img/changement.jpg); background-repeat: no-repeat;background-size: cover;">
             <div>
-              <div class="item">
+              <div class="item" >
                 <img src="./Assets/img/tenu bleu.jpg" alt="Changment" />
               </div>
             </div>
@@ -50,6 +50,7 @@
                   class="btn btn-primary mb-3"
                   data-toggle="modal"
                   data-target="#exampleModal"
+                  style="background-color: #FFD900; color: #20252A;"
                 >
                   Add Player
                 </button>
@@ -59,20 +60,13 @@
             </div>
           </div>
 
-          <!-- <div id="semiPage" class="semi-page">
-            <div class="semi-page-content">
-              <span class="close">&times;x</span>
-
-              <div id="playerCardsContainer"></div>
-            </div>
-          </div> -->
         </div>
       </div>
 
-      <div class="col-md-6">
-        <!-- player dans le stadth -->
+      <div class="col-md-7" id="stadth" style="background-color:  #20252A;">
 
-        <div class="parent1">
+
+        <div class="parent1" >
           <div class="div1" data-position="GK"> 1+ </div>
           <div class="div2" data-position="CB"> 2+ </div>
           <div class="div3" data-position="CB"> 3+ </div>
@@ -88,107 +82,49 @@
         
         
         <!-- <button id="validateBtn">Verification de formation</button> -->
-        
-
-        <!-- <img src="Assets/img/field football.png" alt="" /> -->
-      </div>
-      <div class="col-md-1"></div>
-      <div class="col-md-3">
-
-        <div class="card-affichage" style="display:none;"></div>
-        
-
-<!--  -->
-        <!-- <div class="card-affichage">
-          <div class="left-card">
-            <div>
-               <p> rating :97</p>
-            <img class="logo-player" src="https://cdn.sofifa.net/meta/team/239235/120.png" alt="logo">
-            <img class="flag-player" src="https://cdn.sofifa.net/flags/ar.png" alt="flag">
-
-            </div>
-            <div class="fa">
-             
-            </div>
-           
-          </div>
-          <div class="right-right">
-
-           <div class="imageplayercard">
-            <img src="https://cdn.sofifa.net/players/158/023/25_120.png" alt="imgplayer">
-           </div> 
-           <div class="nameplayercard">
-            <p class="name">Kardache</p>
-           </div>
-           <div class="informationplayer">
-           
-
-               <div class="left-info">
-                <div>
-                 <p>95</p>
-            <p>92</p>
-            <p>87</p>
-            </div>
-            
-            
-            <div>
-                 <p class="pace">Pas</p>
-                <p class="shooting">Sho</p>
-                <p class="passing">Pas</p>
-            </div>
-
-            </div>
-            <div class="right-info">
-              <div>
-                <p>95</p>
-           <p>92</p>
-           <p>87</p>
-           </div>
-           
-           <div>
-                <p class="dribbling">dri</p>
-               <p class="defending">def</p>
-               <p class="physical">phy</p>
-           </div>
-
-           </div>
-
-
-          
-        </div>
-       
-<!--  -->
+  
       </div>
 
-      <!-- card fack in this section -->
-      <!-- <div class="col-md-3">
-        <div class="d-flex item1">
-          <div class="card-info">
-            <p class="position">CF</p>
-            <p class="rating">101</p>
-            <img src="" alt="flag" class="flag" />
-          </div>
-          <div class="card-image" id="clickItem">
-            <img src="Assets/img/tenu red.webp" alt="Player" />
-          </div>
-        </div>
-      </div> -->
+      <!-- <div class="col-md-1"></div> -->
+      <div class="col-md-3" style="background-color:#20252A ;">
+        <h4 class="bg-dark text-center mt-3" style="color:  #FFD900;">Show Deithai De Player Here</h4>
 
-      <!-- end card  -->
-    <!-- </div> --> -->
+<div>
+  <div class="card-affichage" style="display:none;"></div>
+</div>
+<!-- <div class="team-info row align-items-end">
+  
+  <div class="mb-3">
+    <label for="formation">formation:</label>
+    <select id="formation" class="form-select">
+      <option >-</option>
+      <option value="plan1" id="plan1">4-3-3</option>
+      <option value="plan2" id="plan2">4-4-2</option>
+     
+    </select>
+  </div>
+  
+</div> -->
+        
+        
+
+      </div>
+
+     
 
     <div
-      class="modal fade"
+      class="modal fade "
       id="exampleModal"
       tabindex="-1"
       role="dialog"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
+      
     >
       <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Ajouter un Neuveux PLayer</h5>
+          <div class="modal-header" style="background-color: #FFD900; color: #20252A;">
+            <h5 class="modal-title text-center" id="exampleModalLabel" style=" color: #20252A;">Ajouter un Neuveux PLayer</h5>
             <button
               type="button"
               class="close"
@@ -198,11 +134,11 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">
+          <div class="modal-body" >
 
             <div id="error"></div>
 
-            <form id="form">
+            <form id="form" >
               <div class="mb-3">
                 <label for="position">position:</label>
                 <select id="position" class="form-select" required>
@@ -311,7 +247,7 @@
             >
               Close
             </button>
-            <button id="submit" type="button" onclick="addPlayer()" class="btn btn-primary">
+            <button id="submit" type="button" onclick="addPlayer()" class="btn " style="background-color: #FFD900; color: #20252A;" >
               submit
             </button>
           </div>
@@ -496,30 +432,6 @@
   </div>
 
 <!-- ENd  Model for EditeCreatPlayer -->
-
-
-<!--  -->
-<!-- <div class="flex flex-col items-center">
-
-  <i class="fas fa-ellipsis-v cursor-pointer text-gray-600 text-xl" id="option"></i>
-
-  <div id= 'actionButton' class='flex flex-col hidden'>
-    <button class="btn btn-warning edit-btn" 
-    onclick="openEditModal('${player.id}')" 
-    data-bs-toggle="modal" 
-    data-bs-target="#Editplayer">
-    Edit
-  </button>
-   <button class="btn btn-danger delete-player" onclick="deletPlayer(${player.id})">delet</button>
-    <button class="btn btn-primary show-details" onclick="showPlayerDetails(${player.id})">
-  Show Details
-</button>
-
-  </div>
-
-</div> -->
-
-    
 
 
     <script src="Assets/js/app.js"></script>

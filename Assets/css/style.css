@@ -1,3 +1,6 @@
+/* *{
+  background-color:  #20252A;
+} */
 .container{
   display: flex;
   flex-direction: column;
@@ -45,8 +48,9 @@
   margin: 0 auto; 
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(6, 1fr);
-  background-image: url('/Assets/img/field football.png');
-  background-size: 735px 620px; 
+  background-image: url(/Assets/img/field\ football.png);
+  background-size: 100%;
+  background-size: 800px 620px; 
   background-position: right center;
   background-repeat: no-repeat;
 }
@@ -81,7 +85,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   /* cursor: move; */
-  background-color: red; 
+  background-color: #20252A; 
   border-radius: 12px;
   padding: 5px;
   align-items: center;
@@ -104,7 +108,7 @@
   flex-direction: column;
   align-items: center;
   font-size: 11px;
-  color: #333;
+  color: #FFD900;
 }
 
 .card-info2 p {
@@ -179,7 +183,7 @@
   left: 0; 
   width: 22%; 
   height: 100%; 
-  background-color: #f4f4f4;
+  background-color: #E5E5E5;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5); 
   overflow-y: auto;
   transition: transform 0.3s ease-in-out;
@@ -307,10 +311,10 @@
   display: grid;
   grid-template-columns: 1fr 3fr;
   background-image: url('/Assets/img/badge_gold.webp');
-  background-repeat: no-repeat;
-  position: relative;
-  max-height: 47vh;
-  width: 70%;
+  background-repeat:no-repeat;
+  position: absolute;
+  height:
+  width: 95%; 
   padding: 1.5rem;
 }
 
@@ -366,7 +370,7 @@
 .nameplayercard {
   grid-template-rows: 1fr;
   grid-row: 2 / 3;
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   font-weight: bold;
   text-align: center;
   align-items: end;
@@ -400,3 +404,10 @@
 .hidden {
   display: none;
 }
+
+
+/* #stadth{
+  background-image: url(/Assets/img/stadium_background.webp);
+  background-size: 99%;
+  background-repeat: no-repeat;
+} */
