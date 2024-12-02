@@ -199,11 +199,6 @@ function addPlayer() {
   const defending = document.getElementById('defending').value;
   const physical = document.getElementById('physical').value;
 
-  console.log("Form values:", {
-    position, Name, nationality, photo, flag, club, logo,
-    rating, pace, shooting, passing, dribbling, defending, physical
-  });
-
   if (!position || !Name || !nationality || !photo || !flag || !rating || !logo || !club || !pace || !shooting || !passing || !dribbling || !defending || !physical) {
     console.error("Missing fields");
     alert("Please fill in all fields.");
@@ -240,13 +235,7 @@ function closeModal() {
 
 
 function addCard(position, physical, defending, dribbling, passing, shooting, club, pace, logo, flag, nationality, Name, imageSrc, playerId) {
-  const container = document.getElementById('playercard-fitsch');
-  if (!container) {
-    console.error("Container 'playercard-fitsch' not found!");
-    return;
-  }
-
-  const card = document.createElement('div');
+  const container = document.getElementById('playercard-fitsch');const card = document.createElement('div');
   card.classList.add('d-flex', 'item2');
   card.setAttribute('data-player-id', playerId);
   card.setAttribute('draggable', 'true');
@@ -544,10 +533,10 @@ function savePlayerEdits() {
 // afficher le deati de player
 
 function showPlayerDetails(playerId) {
-  if (!fetchedData) {
-    // console.error('gfcghbjbj,nbhvhjvhj');
-    return;
-  }
+  // if (!fetchedData) {
+  //   console.error('gfcghbjbj,nbhvhjvhj');
+  //   return;
+  // }
 
   const player = fetchedData.players.find(p => p.id == playerId);
 
