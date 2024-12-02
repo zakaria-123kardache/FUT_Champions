@@ -1,5 +1,6 @@
 # FUT Champions Web Project
-`![Alt text](/Assets/img/Calendario%20FUT%20Champions%20FIFA.jpg)`
+![FUT Team Builder Interface](/Assets/img/Calendario%20FUT%20Champions%20FIFA.jpg) 
+
 A web application inspired by FUT Champions, designed to allow users to build, customize, and manage their football teams. The app provides features such as player statistics, team formations, and drag-and-drop functionality to position players on the field.
 
 ## Features
@@ -10,7 +11,6 @@ A web application inspired by FUT Champions, designed to allow users to build, c
 - **Player Details**: View detailed stats for each player, including ratings, pace, shooting, passing, and more.
 - **Responsive Design**: Fully responsive interface using Bootstrap and custom CSS.
 
-![FUT Team Builder Interface](images/fut_team_builder_ui.png) <!-- Add your image here -->
 
 ## Technologies Used
 
@@ -18,7 +18,6 @@ A web application inspired by FUT Champions, designed to allow users to build, c
   - HTML
   - CSS (with Bootstrap)
   - JavaScript
-- **Backend (if applicable)**: None, relies on JSON for data storage and manipulation.
 - **Icons**: Font Awesome for icons.
 
 ## Setup and Usage
@@ -30,7 +29,7 @@ A web application inspired by FUT Champions, designed to allow users to build, c
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/fut-champions.git
+   https://github.com/zakaria-123kardache/FUT_Champions_Web_App_Ultimate_Team.git
    ```
 2. Navigate to the project directory:
    ```bash
