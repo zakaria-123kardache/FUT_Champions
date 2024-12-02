@@ -1,5 +1,6 @@
 # FUT Champions Web Project
 ![FUT Team Builder Interface](/Assets/img/Calendario%20FUT%20Champions%20FIFA.jpg) 
+![FUT Team Builder Interface](/Assets/img/Capture%20d'écran.png) 
 
 A web application inspired by FUT Champions, designed to allow users to build, customize, and manage their football teams. The app provides features such as player statistics, team formations, and drag-and-drop functionality to position players on the field.
 
