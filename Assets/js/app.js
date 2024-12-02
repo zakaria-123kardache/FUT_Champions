@@ -166,37 +166,6 @@ function showmessag(message) {
   }, 3000);
 }
 
-
-// function validateFormation() {
-//   let valid = true;
-
-//   divs.forEach(div => {
-//     const divPosition = div.getAttribute('data-position');
-//     const player = div.querySelector('.position');
-
-//     if (!player || player.textContent.trim() !== divPosition) {
-//       valid = false;
-//     }
-//   });
-
-//   if (valid) {
-//     alert("formation players accepte");
-//   } else {
-//     alert("is it erur in Formation u can changes");
-//   }
-// }
-
-
-// document.getElementById('validateBtn').addEventListener('click', validateFormation);
-
-// waring 
-
-// form reset
-
-
-
-
-
 const openModalButton = document.getElementById('openModal');
 const semiPage = document.getElementById('semiPage');
 const closebtn = document.querySelector('.close');
