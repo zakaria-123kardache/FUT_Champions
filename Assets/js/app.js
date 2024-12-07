@@ -533,66 +533,69 @@ function savePlayerEdits() {
 // afficher le deati de player
 
 function showPlayerDetails(playerId) {
-  // if (!fetchedData) {
-  //   console.error('gfcghbjbj,nbhvhjvhj');
-  //   return;
-  // }
-
+  
   const player = fetchedData.players.find(p => p.id == playerId);
 
   if (player) {
     const detailsCard = document.querySelector('.card-affichage');
+
+    let backgroundImage = '';
+    if (player.rating > 1 && player.rating <= 80) {
+        backgroundImage = "url('./Assets/img/badge_gold.webp')"; 
+    } else if (player.rating > 80 && player.rating <= 87) {
+        backgroundImage = 'url("./Assets/img/badge_total_rush.webp")'; 
+    } else if (player.rating > 87) {
+        backgroundImage = 'url("./Assets/img/badge_ballon_dor.webp")'; 
+    }
+
+    
     detailsCard.innerHTML = `
-      <div class="card-affichage">
-    <div class="left-card">
-    <div>
-       <p>${player.rating}</p>
-        <img class="logo-player" src="${player.logo}" alt="logo">
-        <img class="flag-player" src="${player.flag}" alt="flag">
-    </div>
-    <div class = "ffff">
-    </div>
-     
-    </div>
-    <div class="right-right">
+      <div class="left-card">
+        <div>
+          <p>${player.rating}</p>
+          <img class="logo-player" src="${player.logo}" alt="logo">
+          <img class="flag-player" src="${player.flag}" alt="flag">
+        </div>
+        <div class="ffff"></div>
+      </div>
+      <div class="right-right">
         <div class="imageplayercard">
-            <img src="${player.photo}" alt="imgplayer">
+          <img src="${player.photo}" alt="imgplayer">
         </div> 
         <div class="nameplayercard">
-            <p>${player.name}</p>
+          <p>${player.name}</p>
         </div>
         <div class="informationplayer">
-            <div class="left-info">
-                <div class="stat-value">
-                    <p>${player.pace}</p>
-                    <p>${player.shooting}</p>
-                    <p>${player.passing}</p>
-                </div>
-                <div class="stat-label">
-                    <p>Pac</p>
-                    <p>Sho</p>
-                    <p>Pas</p>
-                </div>
+          <div class="left-info">
+            <div class="stat-value">
+              <p>${player.pace}</p>
+              <p>${player.shooting}</p>
+              <p>${player.passing}</p>
             </div>
-            <div class="right-info">
-                <div class="stat-value">
-                    <p>${player.dribbling}</p>
-                    <p>${player.defending}</p>
-                    <p>${player.physical}</p>
-                </div>
-                <div class="stat-label">
-                    <p>Dri</p>
-                    <p>Def</p>
-                    <p>Phy</p>
-                </div>
+            <div class="stat-label">
+              <p>Pac</p>
+              <p>Sho</p>
+              <p>Pas</p>
             </div>
+          </div>
+          <div class="right-info">
+            <div class="stat-value">
+              <p>${player.dribbling}</p>
+              <p>${player.defending}</p>
+              <p>${player.physical}</p>
+            </div>
+            <div class="stat-label">
+              <p>Dri</p>
+              <p>Def</p>
+              <p>Phy</p>
+            </div>
+          </div>
         </div>
-    </div>
-</div>
+      </div>
     `;
+    detailsCard.style.backgroundImage = backgroundImage;
     detailsCard.style.display = 'block';
-  } else {
-    // console.error('hahaha', playerId);
   }
 }
+
 
