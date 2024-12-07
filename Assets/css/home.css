@@ -56,19 +56,22 @@ body{
 #box2{
     width: auto;
     height:auto;
-    font-family: fantasy;
-    font-size: 2rem;
-    color: white;
+    
+    
     font-weight: 500;
-    line-height: 130px;
+    /* line-height: 130px; */
     position: absolute;
     left: 100px;
-    top: 200px;
+    top: 300px;
     overflow: hidden;
 
 }
 #text{
+
+    font-family: fantasy;
+    font-size: 2rem;
     position: relative;
+    color: white;
     left: -100%;
     animation: anim3 2s forwards 3s;
 }
@@ -79,6 +82,32 @@ body{
         left: 0%;
     }
 }
+
+#pandbtn{
+    font-size: 20px;
+    color: aliceblue;
+    position: relative;
+    left: -100%;
+    animation: anim3 2s forwards 3s; 
+}
+@keyframes anim3 {
+    from{
+       left: -100%; 
+    }to{
+        left: 0%;
+    }
+}
+
+#pandbtn button{
+    background-color:  #FFD900;
+    color:#20252A;
+    /* height:40px ; */
+    width: auto;
+    border: 1px solid #FFD900 ;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
 #box3{
     overflow: hidden;
 
@@ -102,10 +131,10 @@ body{
 }
 #menu{
   font-family: fantasy; 
-  font-size: 1rem;
+  font-size: 1.2rem;
   color: aliceblue;
   margin-right: 200px;
-  margin-top: 20px;
+  margin-top: 30px;
   float: right;
 
 
