@@ -540,9 +540,9 @@ function showPlayerDetails(playerId) {
     const detailsCard = document.querySelector('.card-affichage');
 
     let backgroundImage = '';
-    if (player.rating > 1 && player.rating <= 80) {
+    if (player.rating > 1 && player.rating <= 83) {
         backgroundImage = "url('./Assets/img/badge_gold.webp')"; 
-    } else if (player.rating > 80 && player.rating <= 87) {
+    } else if (player.rating > 83 && player.rating <= 87) {
         backgroundImage = 'url("./Assets/img/badge_total_rush.webp")'; 
     } else if (player.rating > 87) {
         backgroundImage = 'url("./Assets/img/badge_ballon_dor.webp")'; 
@@ -552,15 +552,21 @@ function showPlayerDetails(playerId) {
     detailsCard.innerHTML = `
       <div class="left-card">
         <div>
-          <p>${player.rating}</p>
-          <img class="logo-player" src="${player.logo}" alt="logo">
-          <img class="flag-player" src="${player.flag}" alt="flag">
+          <p style="display:none;">${player.rating}</p>
+          <img class="logo-player"style="display:none;" src="${player.logo}" alt="logo">
+          <img class="flag-player"style="display:none;" src="${player.flag}" alt="flag">
         </div>
         <div class="ffff"></div>
       </div>
       <div class="right-right">
         <div class="imageplayercard">
-          <img src="${player.photo}" alt="imgplayer">
+          
+            <div>
+          <p >${player.rating}</p>
+          <img class="logo-player" src="${player.logo}" alt="logo">
+          <img class="flag-player"src="${player.flag}" alt="flag">
+        </div>
+        <img src="${player.photo}" alt="imgplayer">
         </div> 
         <div class="nameplayercard">
           <p>${player.name}</p>

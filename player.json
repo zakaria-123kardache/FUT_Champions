@@ -341,7 +341,7 @@
         "physical": 63
       },
       {
-        "name": "Trent Alexander-Arnold",
+        "name": "Arnold",
         
         "photo": "https://cdn.sofifa.net/players/231/281/25_120.png",
         "position": "RB",
@@ -374,7 +374,7 @@
         "physical": 78
       },
       {
-        "name": "Youssef En-Nesyri",
+        "name": "En-Nesyri",
         
         "photo": "https://cdn.sofifa.net/players/235/410/25_120.png",
         "position": "ST",
@@ -391,7 +391,7 @@
         "physical": 80
       },
       {
-        "name": "Noussair Mazraoui",
+        "name": "Mazraoui",
         "photo": "https://cdn.sofifa.net/players/236/401/25_120.png",
         "position": "LB",
         "nationality": "Morocco",
@@ -407,7 +407,7 @@
         "physical": 71
       },
       {
-        "name": "Ismael Saibari",
+        "name": "Saibari",
         "photo": "https://cdn.sofifa.net/players/259/480/25_120.png",
         "position": "CM",
         "nationality": "Morocco",
@@ -423,7 +423,7 @@
         "physical": 84
       },
       {
-        "name": "Gianluigi Donnarumma",
+        "name": "Donnarumma",
         "photo": "https://cdn.sofifa.net/players/230/621/25_120.png",
         "position": "GK",
         "nationality": "Italy",
