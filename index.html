@@ -76,8 +76,8 @@
           <div class="div7" data-position="CM"> 7+ </div>
           <div class="div8" data-position="CM"> 8+ </div>
           <div class="div9" data-position="LW"> 9+ </div>
-          <div class="div10" data-position="RW"> 10+ </div>
-          <div class="div11" data-position="ST"> 11+ </div>
+          <div class="div10" data-position="ST"> 10+ </div>
+          <div class="div11" data-position="RW"> 11+ </div>
         </div>
   
       </div>
@@ -141,14 +141,18 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body" >
+          <div class="modal-body" style="color: aliceblue; background-color: #20252A;">
 
             <div id="error"></div>
 
-            <form id="form" >
+            <form id="form" style="color: aliceblue; background-color: #20252A;">
+
+              <div class="row">
+          
+                <div class="col-md-6">
               <div class="mb-3">
                 <label for="position">position:</label>
-                <select id="position" class="form-select" required>
+                <select id="position" class="form-select" style="color: aliceblue; background-color: #20252A;">
                   <option value="RW">RW</option>
                   <option value="ST">ST</option>
                   <option value="CM">CM</option>
@@ -160,6 +164,7 @@
                   <option value="RB">RB</option>
                 </select>
               </div>
+
               <div class="mb-3">
                 <label for="photo" class="form-label">photo:</label>
                 <input
@@ -167,11 +172,12 @@
                   id="photo"
                   class="form-control"
                   accept="image/*"
+                  style="color: aliceblue; background-color: #20252A;"
                 />
               </div>
               <div class="mb-3">
                 <label for="Name" class="form-label">Name:</label>
-                <input type="text" id="Name" class="form-control" />
+                <input type="text" id="Name" class="form-control" style="color: aliceblue; background-color: #20252A;"/>
               </div>
               <div class="mb-3">
                 <label for="nationality" class="form-label">nationality:</label>
@@ -179,29 +185,36 @@
                   type="text"
                   id="nationality"
                   class="form-control"
-                  required
+                  style="color: aliceblue; background-color: #20252A;"
                 />
               </div>
               <div class="mb-3">
                 <label for="flag" class="form-label">flag:</label>
-                <input type="text" id="flag" class="form-control" placeholder="Enter ur Url flag" />
+                <input type="text" id="flag" class="form-control" placeholder="Enter ur Url flag" style="color: aliceblue; background-color: #20252A;"/>
               </div>
+
+              </div>
+              
+          
+                <div class="col-md-6">
+
+
               <div class="mb-3">
                 <label for="club" class="form-label">club:</label>
-                <input type="text" id="club" class="form-control" />
+                <input type="text" id="club" class="form-control" style="color: aliceblue; background-color: #20252A;"/>
               </div>
               <div class="mb-3">
                 <label for="logo" class="form-label" >logo:</label>
-                <input type="text" id="logo" class="form-control" placeholder="Enter ur Url LOGO" />
+                <input type="text" id="logo" class="form-control" placeholder="Enter ur Url LOGO" style="color: aliceblue; background-color: #20252A;"/>
               </div>
               <div class="mb-3">
                 <label for="rating" class="form-label">rating:</label>
-                <input type="number" id="rating" class="form-control" />
+                <input type="number" id="rating" class="form-control" style="color: aliceblue; background-color: #20252A;"/>
               </div>
 
               <div class="mb-3">
                 <label for="pace" class="form-label">pace:</label>
-                <input type="number" id="pace" class="form-control" />
+                <input type="number" id="pace" class="form-control" style="color: aliceblue; background-color: #20252A;"/>
               </div>
               <div class="mb-3">
                 <label for="shooting" class="form-label">shooting:</label>
@@ -209,12 +222,21 @@
                   type="number"
                   id="shooting"
                   class="form-control"
-                  required
+                  style="color: aliceblue; background-color: #20252A;"
                 />
               </div>
+              </div>
+              </div>
+
+
+              <div class="row">
+          
+                <div class="col-md-6">
+
+
               <div class="mb-3">
                 <label for="passing" class="form-label">passing:</label>
-                <input type="num" id="passing" class="form-control" />
+                <input type="num" id="passing" class="form-control" style="color: aliceblue; background-color: #20252A;" />
               </div>
               <div class="mb-3">
                 <label for="dribbling" class="form-label">dribbling:</label>
@@ -222,16 +244,20 @@
                   type="number"
                   id="dribbling"
                   class="form-control"
-                  required
+                  style="color: aliceblue; background-color: #20252A;"
                 />
+
+
               </div>
+              </div>
+              <div class="col-md-6">
               <div class="mb-3">
                 <label for="defending" class="form-label">defending:</label>
                 <input
                   type="number"
                   id="defending"
                   class="form-control"
-                  required
+                  style="color: aliceblue; background-color: #20252A;"
                 />
               </div>
               <div class="mb-3">
@@ -240,12 +266,15 @@
                   type="number"
                   id="physical"
                   class="form-control"
-                  required
+                  style="color: aliceblue; background-color: #20252A;"
                 />
               </div>
+              </div>
+              </div>
+
             </form>
           </div>
-          <div class="modal-footer">
+          <div class="modal-footer" style="color: aliceblue; background-color: #20252A;">
             <button
               type="button"
               class="btn btn-secondary"
@@ -269,87 +298,119 @@
 <div class="modal fade" id="Editplayer" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header" style="color: aliceblue; background-color: #20252A;">
         <h5 class="modal-title">Editing Player</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" style="color: aliceblue; background-color: #20252A;">
         <input type="hidden" id="edit-player-id">
-        <div class="mb-3">
-          <label>Position</label>
-          <select id="edit-position" class="form-select" autocomplete="off">
-            <option value="RW">RW</option>
-            <option value="ST">ST</option>
-            <option value="CM">CM</option>
-            <option value="LW">LW</option>
-            <option value="GK">GK</option>
-            <option value="CDM">CDM</option>
-            <option value="CB">CB</option>
-            <option value="LB">LB</option>
-            <option value="RB">RB</option>
-          </select>
         
+        <div class="row">
+          
+          <div class="col-md-6">
+
+            <div class="mb-3">
+              <label>Position</label>
+              <select id="edit-position" class="form-select" autocomplete="off" style="color: aliceblue; background-color: #20252A;">
+                <option value="RW">RW</option>
+                <option value="ST">ST</option>
+                <option value="CM">CM</option>
+                <option value="LW">LW</option>
+                <option value="GK">GK</option>
+                <option value="CDM">CDM</option>
+                <option value="CB">CB</option>
+                <option value="LB">LB</option>
+                <option value="RB">RB</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="Name" class="form-label">Name:</label>
+              <input type="text" id="edit-name" class="form-control" style="color: aliceblue; background-color: #20252A;"/>
+            </div>
+            <div class="mb-3">
+              <label for="Nationality" class="form-label">Nationality:</label>
+              <input type="text" id="edit-nationality" class="form-control" style="color: aliceblue; background-color: #20252A;"/>
+            </div>
+            <div class="mb-3">
+              <label for="Flag" class="form-label">Flag:</label>
+              <input type="text" id="edit-flag" class="form-control" style="color: aliceblue; background-color: #20252A;"/>
+            </div>
+            <div class="mb-3">
+              <label for="Club" class="form-label">Club:</label>
+              <input type="text" id="edit-club" class="form-control" style="color: aliceblue; background-color: #20252A;"/>
+            </div>
+
+          </div>
+
+         
+          <div class="col-md-6">
+
+            <div class="mb-3">
+              <label for="Logo" class="form-label">Logo:</label>
+              <input type="text" id="edit-logo" class="form-control" style="color: aliceblue; background-color: #20252A;"/>
+            </div>
+            <div class="mb-3">
+              <label for="Pace" class="form-label">Pace:</label>
+              <input type="number" id="edit-pace" class="form-control" style="color: aliceblue; background-color: #20252A;"/>
+            </div>
+            <div class="mb-3">
+              <label for="Shooting" class="form-label">Shooting:</label>
+              <input type="number" id="edit-shooting" class="form-control" style="color: aliceblue; background-color: #20252A;"/>
+            </div>
+            <div class="mb-3">
+              <label for="Passing" class="form-label">Passing:</label>
+              <input type="number" id="edit-passing" class="form-control" style="color: aliceblue; background-color: #20252A;"/>
+            </div>
+            <div class="mb-3">
+              <label for="Dribbling" class="form-label">Dribbling:</label>
+              <input type="number" id="edit-dribbling" class="form-control" style="color: aliceblue; background-color: #20252A;"/>
+            </div>
+          </div>
+
         </div>
-        <div class="mb-3">
-          <label for="Name" class="form-label">Name:</label>
-          <input type="text" id="edit-name" class="form-control"/>
+
+        <div class="row">
+          
+          
+          <div class="col-md-6">
+
+            <div class="mb-3">
+
+              <label for="defending" class="form-label">Defending:</label>
+              <input type="number" id="edit-defending" class="form-control" autocomplete="off" style="color: aliceblue; background-color: #20252A;"/>
+            </div>
+            <div class="mb-3">
+              <label for="physical" class="form-label">Physical:</label>
+              <input type="number" id="edit-physical" class="form-control" autocomplete="off" style="color: aliceblue; background-color: #20252A;"/>
+            </div>
+            <!-- <div class="mb-3">
+              <label for="rating" class="form-label">Rating:</label>
+              <input type="number" id="edit-rating" class="form-control" autocomplete="off" style="color: aliceblue; background-color: #20252A;"/>
+            </div> -->
+          </div>
+
+        
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label>Photo</label>
+              <input type="file" id="edit-photo" class="form-control" style="color: aliceblue; background-color: #20252A;">
+            </div>
+            <div class="mb-3">
+              <label for="rating" class="form-label">Rating:</label>
+              <input type="number" id="edit-rating" class="form-control" autocomplete="off" style="color: aliceblue; background-color: #20252A;"/>
+            </div>
+          </div>
         </div>
-        <div class="mb-3">
-          <label for="Nationality" class="form-label">Nationality:</label>
-          <input type="text" id="edit-nationality" class="form-control"/>
-        </div>
-        <div class="mb-3">
-          <label for="Flag" class="form-label">Flag:</label>
-          <input type="text" id="edit-flag" class="form-control"/>
-        </div>
-        <div class="mb-3">
-          <label for="Club" class="form-label">Club:</label>
-          <input type="text" id="edit-club" class="form-control"/>
-        </div>
-        <div class="mb-3">
-          <label for="Logo" class="form-label">Logo:</label>
-          <input type="text" id="edit-logo" class="form-control"/>
-        </div>
-        <div class="mb-3">
-          <label for="Pace" class="form-label">Pace:</label>
-          <input type="number" id="edit-pace" class="form-control"/>
-        </div>
-        <div class="mb-3">
-          <label for="Shooting" class="form-label">Shooting:</label>
-          <input type="number" id="edit-shooting" class="form-control"/>
-        </div>
-        <div class="mb-3">
-          <label for="Passing" class="form-label">Passing:</label>
-          <input type="number" id="edit-passing" class="form-control"/>
-        </div>
-        <div class="mb-3">
-          <label for="Dribbling" class="form-label">Dribbling:</label>
-          <input type="number" id="edit-dribbling" class="form-control">
-        </div>
-        <div class="mb-3">
-          <label for="defending" class="form-label">Defending:</label>
-          <input type="number" id="edit-defending" class="form-control" autocomplete="off"/>
-        </div>
-        <div class="mb-3">
-          <label for="physical" class="form-label">Physical:</label>
-          <input type="number" id="edit-physical" class="form-control" autocomplete="off"/>
-        </div>
-        <div class="mb-3">
-          <label for="rating" class="form-label">Rating:</label>
-          <input type="number" id="edit-rating" class="form-control" autocomplete="off"/>
-        </div>
-        <div class="mb-3">
-          <label>Photo</label>
-          <input type="file" id="edit-photo" class="form-control">
-        </div>
+
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer" style="background-color: #20252A;">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-        <button type="button" class="btn btn-primary" onclick="updatePlayer()">Sauvegarder</button>
+        <button type="button" class="btn " style="background-color: #FFD900; color: #20252A;" onclick="updatePlayer()">Sauvegarder</button>
       </div>
     </div>
   </div>
 </div>
+
 
 <!-- eend modal for editi player -->
 
@@ -362,6 +423,11 @@
         <h5 class="modal-title">Editing CreatPalyer iNformation</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
+
+      <div class="row">
+          
+        <div class="col-md-6">
+
       <div class="mb-3">
         <label>Position</label>
         <select id="CRedit-position" class="form-select" autocomplete="off">
@@ -393,6 +459,9 @@
         <label for="Club" class="form-label">Club:</label>
         <input type="text" id="CRedit-club" class="form-control"/>
       </div>
+
+      </div>
+      <div class="col-md-6">
       <div class="mb-3">
         <label for="Logo" class="form-label">Logo:</label>
         <input type="text" id="CRedit-logo" class="form-control"/>
@@ -413,6 +482,16 @@
         <label for="Dribbling" class="form-label">Dribbling:</label>
         <input type="number" id="CRedit-dribbling" class="form-control">
       </div>
+
+      </div>
+      </div>
+
+
+      <div class="row">
+          
+          
+        <div class="col-md-6">
+
       <div class="mb-3">
         <label for="defending" class="form-label">Defending:</label>
         <input type="number" id="CRedit-defending" class="form-control" autocomplete="off"/>
@@ -421,6 +500,10 @@
         <label for="physical" class="form-label">Physical:</label>
         <input type="number" id="CRedit-physical" class="form-control" autocomplete="off"/>
       </div>
+
+      </div>
+
+<div class="col-md-6">
       <div class="mb-3">
         <label for="rating" class="form-label">Rating:</label>
         <input type="number" id="CRedit-rating" class="form-control" autocomplete="off"/>
@@ -429,6 +512,9 @@
         <label>Photo</label>
         <input type="file" id="CRedit-photo" class="form-control">
       </div>
+
+      </div>
+
     </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
